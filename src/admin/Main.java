@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bolo_project_akhir_pemvis;
+package admin;
+import db.DBConnector;
+
 
 /**
  *
  * @author 62821
  */
-public class BOLO_project_akhir_pemvis {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        DBConnector conn = new DBConnector();
+        conn.print();
     }
-    
 }
