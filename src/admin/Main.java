@@ -5,6 +5,8 @@
  */
 package admin;
 import db.DBConnector;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**
@@ -12,8 +14,14 @@ import db.DBConnector;
  * @author 62821
  */
 public class Main {
-    public static void main(String[] args) {
-        DBConnector conn = new DBConnector();
-        conn.print();
+    public static void main(String[] args) throws SQLException {
+        DBConnector dbConn = new DBConnector();
+        dbConn.koneksimysql();
+        ResultSet rs = dbConn.stm.executeQuery("SELECT * FROM houses");
+        while(rs.next())
+        {
+            System.out.println(rs.getBigDecimal("price"));
+        }
+//        conn.print();
     }
 }
