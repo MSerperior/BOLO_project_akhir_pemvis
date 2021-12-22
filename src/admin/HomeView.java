@@ -5,10 +5,13 @@
  */
 package admin;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.*;
 
 /**
  *
@@ -20,12 +23,19 @@ public class HomeView extends javax.swing.JFrame {
      * Creates new form HomeView
      */
     public HomeView() throws SQLException {
-        HomeController homeController = new HomeController();
-        ResultSet rs = homeController.test();
-        
-        while(rs.next()){
-            System.out.println(rs.getString("title"));
-        }
+//        HomeController homeController = new HomeController();
+////        homeController.testInsert();
+//        ResultSet rs = homeController.test();
+////        Date date = new Date();
+////        date.valueOf("2021-11-30");
+//        while(rs.next()){
+//            
+//            System.out.print(rs.getString("title"));
+//            System.out.print(" ");
+//            System.out.println(rs.getTime("created_at").after(Time.valueOf("18:00:00")));
+//        }
+        Admin admin = new Admin(1,"Dany Christian","danychr33@gmail.com","abcdefgh");
+        admin.save();
         initComponents();
     }
 
