@@ -5,10 +5,16 @@
  */
 package models;
 
+import java.util.Calendar;
+
 /**
  *
  * @author 62821
  */
 public class RiwayatTopUp {
-    
+    int id_riwayat;
+    int id_user;
+    int id_admin;
+    int jumlah;
+    Calendar tanggal_top_up;
 }

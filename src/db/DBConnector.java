@@ -19,7 +19,7 @@ public class DBConnector {
     public static Statement stm;
     public DBConnector(){
         try {
-            String url ="jdbc:mysql://localhost/web_property_v2";
+            String url ="jdbc:mysql://localhost/reservasi_lapangan";
             String user="root";
             String pass="";
             Class.forName("com.mysql.cj.jdbc.Driver");

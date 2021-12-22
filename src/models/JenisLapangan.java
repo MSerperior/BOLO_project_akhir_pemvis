@@ -10,5 +10,6 @@ package models;
  * @author 62821
  */
 public class JenisLapangan {
-    
+    int id_jenis_lapangan;
+    String jenis_lapangan;
 }

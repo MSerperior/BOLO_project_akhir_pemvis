@@ -10,5 +10,7 @@ package models;
  * @author 62821
  */
 public class Gambar {
-    
+    int id_gambar;
+    int id_lapangan;
+    String url_gambar;
 }

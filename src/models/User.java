@@ -10,5 +10,9 @@ package models;
  * @author 62821
  */
 public class User {
-    
+    int id_user;
+    String nama;
+    String email;
+    String password;
+    int saldo;
 }

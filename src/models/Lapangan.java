@@ -10,5 +10,8 @@ package models;
  * @author 62821
  */
 public class Lapangan {
-    
+    int id_lapangan;
+    int id_jenis_lapangan;
+    String nama_lapangan;
+    int harga_per_jam;
 }

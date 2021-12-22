@@ -5,10 +5,20 @@
  */
 package models;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 /**
  *
  * @author 62821
  */
 public class Rental {
+    int id_rental;
+    int id_user;
+    int id_lapangan;
+    int durasi;
+    Date waktu_pemesanan; //masih belum fix
+    Date waktu_mulai;
+    int total_pembayaran;
     
 }
