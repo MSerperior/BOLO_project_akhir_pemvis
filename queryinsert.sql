@@ -4,21 +4,26 @@ INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`) VALUES
 (1003, 'Vera Rahayu', 'verayu44@gmail.com', 'vera1234'),
 (1004, 'Ivan Maulana', 'ivan767@yahoo.com', 'ivan54321');
 
-INSERT INTO `gambar` (`id_gambar`, `id_lapangan`, `url_gambar`) VALUES
-(1, 11, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXEbWk45KBw8Zcgk1dJQ73_2cIqMGsR9G4NzMqrkAmkDOxhnI1g8btLDtH_IGnjRrDiUk&usqp=CAU'),
-(2, 12, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs8QzMZaK4Iis4EXDTcUtTdbcqeC2RH0kNS0Fz5nfuie0xAxrs-UH2Fgpd4fff4osTah0&usqp=CAU'),
-(3, 13, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlp3vCq3yuaFTDi7izCBN-KI5p9Y2MdM3TYw&usqp=CAU'),
-(4, 14, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPClHnmde2voEr56czVQsZo_4AHtqclc0vJQ&usqp=CAU'),
-(5, 15, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtvqGXF4cntlhYNbPeGE8bca5XApnF8MdEVA&usqp=CAU'),
-(6, 16, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSurY2ScGl7rQ9e5Zc43k5gm94o6NFi-vCoAw&usqp=CAU'),
-(7, 17, 'https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/Ukuran-Lapangan-Bulu-Tangkis.jpg'),
-(8, 18, 'https://www.garudaprint.com/olahraga/wp-content/uploads/2020/08/ukuran-lapangan-badminton.png');
-
 INSERT INTO `jenis_lapangan` (`id_jenis_lapangan`, `jenis_lapangan`) VALUES
 (1010, 'Lapangan Futsal'),
 (1020, 'Lapangan Voli '),
 (1030, 'Lapangan Basket'),
 (1040, 'Lapangan Badminton');
+
+INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `saldo`) VALUES
+(101, 'Rahmat Hidayanto', 'Rahmat01@yahoo.com', 'rahmat111', 50000),
+(102, 'Yosef Santoso', 'yosefsanto@yahoo.com', 'yosef12345', 65000),
+(103, 'Okta Mustofa', 'oktamustofa02@gmail.com', 'mustofa123', 75000),
+(104, 'Pranata Sinaga', 'sinaga45@gmail.com', 'sinaga54321', 90000),
+(105, 'Latif Putra', 'latif30@yahoo.com', 'latif1212', 30000),
+(106, 'Umar Narpati', 'umarnarpati@yahoo.com', 'narpati123', 76000),
+(107, 'Cahyo Budiyanto', 'cahyo77@gmail.com', 'cahyo123', 47000),
+(108, 'Teguh Wahyudi', 'Teguh80@gmail.com', 'Teguh2828', 83000),
+(109, 'Radit Ardiyanto', 'Aridyantoradit@yahoo.com', 'radit1111', 85000),
+(110, 'Panji Adriansyah', 'Panjiadri18@gmail.com', 'panji1818', 68000),
+(111, 'Ira Fujiati', 'Fujiati99@yahoo.com', 'fujiati12345', 33000),
+(112, 'Siska Permata', 'siska122@gmail.com', 'siska212', 38000),
+(113, 'Cindy Utami', 'cindyutami66@gmail.com', 'cindy1234', 42000);
 
 INSERT INTO `lapangan` (`id_lapangan`, `id_jenis_lapangan`, `nama_lapangan`, `harga_per_jam`) VALUES
 (11, 1010, 'Lapangan A', 50000),
@@ -42,18 +47,13 @@ INSERT INTO `riwayat_top_up` (`id_riwayat`, `id_user`, `id_admin`, `jumlah`, `ta
 (300, 104, 1003, 700000, '2021-12-24 10:41:06'),
 (400, 112, 1002, 22000, '2021-12-24 10:10:39');
 
-INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `saldo`) VALUES
-(101, 'Rahmat Hidayanto', 'Rahmat01@yahoo.com', 'rahmat111', 50000),
-(102, 'Yosef Santoso', 'yosefsanto@yahoo.com', 'yosef12345', 65000),
-(103, 'Okta Mustofa', 'oktamustofa02@gmail.com', 'mustofa123', 75000),
-(104, 'Pranata Sinaga', 'sinaga45@gmail.com', 'sinaga54321', 90000),
-(105, 'Latif Putra', 'latif30@yahoo.com', 'latif1212', 30000),
-(106, 'Umar Narpati', 'umarnarpati@yahoo.com', 'narpati123', 76000),
-(107, 'Cahyo Budiyanto', 'cahyo77@gmail.com', 'cahyo123', 47000),
-(108, 'Teguh Wahyudi', 'Teguh80@gmail.com', 'Teguh2828', 83000),
-(109, 'Radit Ardiyanto', 'Aridyantoradit@yahoo.com', 'radit1111', 85000),
-(110, 'Panji Adriansyah', 'Panjiadri18@gmail.com', 'panji1818', 68000),
-(111, 'Ira Fujiati', 'Fujiati99@yahoo.com', 'fujiati12345', 33000),
-(112, 'Siska Permata', 'siska122@gmail.com', 'siska212', 38000),
-(113, 'Cindy Utami', 'cindyutami66@gmail.com', 'cindy1234', 42000);
 
+INSERT INTO `gambar` (`id_gambar`, `id_lapangan`, `url_gambar`) VALUES
+(1, 11, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXEbWk45KBw8Zcgk1dJQ73_2cIqMGsR9G4NzMqrkAmkDOxhnI1g8btLDtH_IGnjRrDiUk&usqp=CAU'),
+(2, 12, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs8QzMZaK4Iis4EXDTcUtTdbcqeC2RH0kNS0Fz5nfuie0xAxrs-UH2Fgpd4fff4osTah0&usqp=CAU'),
+(3, 13, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlp3vCq3yuaFTDi7izCBN-KI5p9Y2MdM3TYw&usqp=CAU'),
+(4, 14, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPClHnmde2voEr56czVQsZo_4AHtqclc0vJQ&usqp=CAU'),
+(5, 15, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtvqGXF4cntlhYNbPeGE8bca5XApnF8MdEVA&usqp=CAU'),
+(6, 16, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSurY2ScGl7rQ9e5Zc43k5gm94o6NFi-vCoAw&usqp=CAU'),
+(7, 17, 'https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/Ukuran-Lapangan-Bulu-Tangkis.jpg'),
+(8, 18, 'https://www.garudaprint.com/olahraga/wp-content/uploads/2020/08/ukuran-lapangan-badminton.png');
