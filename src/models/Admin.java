@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package models;
 
 /**
  *
  * @author 62821
  */
-public class JenisLapangan {
+public class Admin {
     
 }
