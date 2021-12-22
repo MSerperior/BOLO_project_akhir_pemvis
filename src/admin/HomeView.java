@@ -5,6 +5,11 @@
  */
 package admin;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author 62821
@@ -14,7 +19,13 @@ public class HomeView extends javax.swing.JFrame {
     /**
      * Creates new form HomeView
      */
-    public HomeView() {
+    public HomeView() throws SQLException {
+        HomeController homeController = new HomeController();
+        ResultSet rs = homeController.test();
+        
+        while(rs.next()){
+            System.out.println(rs.getString("title"));
+        }
         initComponents();
     }
 
@@ -73,7 +84,11 @@ public class HomeView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeView().setVisible(true);
+                try {
+                    new HomeView().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

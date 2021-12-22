@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class DBConnector {
     public static Connection con;
     public static Statement stm;
-    public void koneksimysql(){
+    public DBConnector(){
         try {
             String url ="jdbc:mysql://localhost/web_property_v2";
             String user="root";
