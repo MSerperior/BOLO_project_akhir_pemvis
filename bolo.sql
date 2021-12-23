@@ -1,12 +1,12 @@
 CREATE TABLE admin (
-	id_admin int PRIMARY KEY,
+	id_admin int PRIMARY KEY AUTO_INCREMENT,
 	nama varchar(50) NOT NULL,
 	email varchar(255) NOT NULL,
 	password varchar(255) NOT NULL
 );
 
 CREATE TABLE riwayat_top_up (
-	id_riwayat int PRIMARY KEY,
+	id_riwayat int PRIMARY KEY AUTO_INCREMENT,
 	id_user int NOT NULL,
 	id_admin int NOT NULL,
 	jumlah int NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE riwayat_top_up (
 );
 
 CREATE TABLE user (
-	id_user int PRIMARY KEY,
+	id_user int PRIMARY KEY AUTO_INCREMENT,
 	nama varchar(50) NOT NULL,
 	email varchar(255) NOT NULL,
 	password varchar(255) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE rental (
-	id_rental int PRIMARY KEY,
+	id_rental int PRIMARY KEY AUTO_INCREMENT,
 	id_user int NOT NULL,
 	id_lapangan int NOT NULL,
 	durasi int NOT NULL,
@@ -32,19 +32,19 @@ CREATE TABLE rental (
 );
 
 CREATE TABLE lapangan (
-	id_lapangan int PRIMARY KEY,
+	id_lapangan int PRIMARY KEY AUTO_INCREMENT,
 	id_jenis_lapangan int NOT NULL,
 	nama_lapangan varchar(255) NOT NULL,
 	harga_per_jam int NOT NULL
 );
 
 CREATE TABLE jenis_lapangan (
-	id_jenis_lapangan int PRIMARY KEY,
+	id_jenis_lapangan int PRIMARY KEY AUTO_INCREMENT,
 	jenis_lapangan varchar(50) NOT NULL
 );
 
 CREATE TABLE gambar (
-	id_gambar int PRIMARY KEY,
+	id_gambar int PRIMARY KEY AUTO_INCREMENT,
 	id_lapangan int NOT NULL,
 	url_gambar varchar(255) NOT NULL
 );
