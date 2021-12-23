@@ -22,7 +22,7 @@ abstract class Model {
         this.table = table;
         this.savePrefix = "INSERT INTO " + this.table;
         this.deletePrefix = "DELETE FROM " + this.table + " ";
-        this.updatePrefix = "UPDATE " + this.table + " ";
+        this.updatePrefix = "UPDATE " + this.table + " SET ";
     }
     public abstract void save();
     public abstract void delete();

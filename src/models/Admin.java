@@ -103,11 +103,26 @@ public class Admin extends Model{
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.dbConn.stm.execute(this.deletePrefix +
+                    String.format("WHERE id_admin=%d",
+                            this.id_admin) );
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.dbConn.stm.execute(this.updatePrefix +
+                    String.format("nama='%s', email='%s', password='%s' WHERE id_admin='%d'",
+                            this.nama,
+                            this.email,
+                            this.password,
+                            this.id_admin) );
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
