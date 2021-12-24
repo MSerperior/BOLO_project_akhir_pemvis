@@ -1,7 +1,7 @@
 CREATE TABLE admin (
 	id_admin int PRIMARY KEY AUTO_INCREMENT,
 	nama varchar(50) NOT NULL,
-	email varchar(255) NOT NULL,
+	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE riwayat_top_up (
 CREATE TABLE user (
 	id_user int PRIMARY KEY AUTO_INCREMENT,
 	nama varchar(50) NOT NULL,
-	email varchar(255) NOT NULL,
+	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	saldo int NOT NULL
 );
