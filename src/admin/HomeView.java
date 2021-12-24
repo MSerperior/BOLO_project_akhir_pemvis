@@ -22,7 +22,7 @@ public class HomeView extends javax.swing.JFrame {
     /**
      * Creates new form HomeView
      */
-    public HomeView() throws SQLException {
+    public HomeView(){
 //        HomeController homeController = new HomeController();
 ////        homeController.testInsert();
 //        ResultSet rs = homeController.test();
@@ -34,8 +34,9 @@ public class HomeView extends javax.swing.JFrame {
 //            System.out.print(" ");
 //            System.out.println(rs.getTime("created_at").after(Time.valueOf("18:00:00")));
 //        }
-        Admin admin = new Admin(1,"Dany Christian","danychr33@gmail.com","abcdefgh");
-        admin.save();
+//        Admin admin = new Admin("Dany Christian","danychr33@gmail.com","90908012");
+////        User user = new User("Dany Christian","danychr33@gmail.com","12345678");
+//        System.out.println(admin.login());
         initComponents();
     }
 
@@ -93,12 +94,9 @@ public class HomeView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                try {
-                    new HomeView().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new HomeView().setVisible(true);
             }
         });
     }
