@@ -16,6 +16,7 @@ abstract class Model {
     String savePrefix;
     String deletePrefix;
     String updatePrefix;
+    String selectPrefix;
     DBConnector dbConn = new DBConnector();
     
     Model(String table){
@@ -23,9 +24,10 @@ abstract class Model {
         this.savePrefix = "INSERT INTO " + this.table;
         this.deletePrefix = "DELETE FROM " + this.table + " ";
         this.updatePrefix = "UPDATE " + this.table + " SET ";
+        this.selectPrefix = "SELECT * FROM " + this.table + " ";
     }
     public abstract void save();
     public abstract void delete();
     public abstract void update();
-    
+    public abstract boolean exist();
 }

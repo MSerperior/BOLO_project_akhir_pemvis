@@ -13,15 +13,19 @@ import java.util.logging.Logger;
  *
  * @author 62821
  */
-public class User extends Model{
+public class User extends Model implements Authenticable {
 
-    public User(){
+    public User() {
         super("user");
         this.saldo = 0;
     }
-    public User(String nama, String email, String password){
+    public User(int id) {
         super("user");
-//        this.id_user = id_user;
+        this.id_user = id;
+        this.saldo = 0;
+    }
+    public User(String nama, String email, String password) {
+        super("user");
         this.nama = nama;
         this.email = email;
         this.password = password;
@@ -106,12 +110,12 @@ public class User extends Model{
     @Override
     public void save() {
         try {
-            this.dbConn.stm.execute(this.savePrefix +
-                    String.format("(`nama`, `email`, `password`, `saldo`) VALUES ('%s','%s','%s',%d)",
+            this.dbConn.stm.execute(this.savePrefix
+                    + String.format("(`nama`, `email`, `password`, `saldo`) VALUES ('%s','%s','%s',%d)",
                             this.nama,
                             this.email,
                             this.password,
-                            this.saldo) );
+                            this.saldo));
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,9 +124,9 @@ public class User extends Model{
     @Override
     public void delete() {
         try {
-            this.dbConn.stm.execute(this.deletePrefix +
-                    String.format("WHERE id_user=%d",
-                            this.id_user) );
+            this.dbConn.stm.execute(this.deletePrefix
+                    + String.format("WHERE id_user=%d",
+                            this.id_user));
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -131,15 +135,41 @@ public class User extends Model{
     @Override
     public void update() {
         try {
-            this.dbConn.stm.execute(this.updatePrefix +
-                    String.format("nama='%s', email='%s', password='%s', saldo=%d WHERE id_user='%d'",
+            this.dbConn.stm.execute(this.updatePrefix
+                    + String.format("nama='%s', email='%s', password='%s', saldo=%d WHERE id_user='%d'",
                             this.nama,
                             this.email,
                             this.password,
                             this.saldo,
-                            this.id_user) );
+                            this.id_user));
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public boolean exist() {
+        try {
+            return this.dbConn.stm.executeQuery(this.selectPrefix
+                    + String.format("WHERE email='%s' AND password='%s'",
+                            this.email,
+                            this.password)).next();
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean login() {
+        try {
+            return this.dbConn.stm.executeQuery(this.selectPrefix
+                    + String.format("WHERE email='%s' AND password='%s'",
+                            this.email,
+                            this.password)).next();
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
