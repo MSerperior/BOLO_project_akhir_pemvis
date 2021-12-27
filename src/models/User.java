@@ -117,7 +117,7 @@ public class User extends Model implements Authenticable {
                             this.password,
                             this.saldo));
         } catch (SQLException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -128,7 +128,7 @@ public class User extends Model implements Authenticable {
                     + String.format("WHERE id_user=%d",
                             this.id_user));
         } catch (SQLException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -143,7 +143,7 @@ public class User extends Model implements Authenticable {
                             this.saldo,
                             this.id_user));
         } catch (SQLException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
