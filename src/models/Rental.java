@@ -151,7 +151,6 @@ public class Rental extends Model {
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override

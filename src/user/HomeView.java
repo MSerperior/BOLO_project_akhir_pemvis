@@ -6,8 +6,14 @@
 package user;
 
 import java.awt.Color;
+import javafx.scene.Parent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -19,7 +25,19 @@ public class HomeView extends javax.swing.JFrame {
      * Creates new form HomeView
      */
     public HomeView() {
+        // Create dataset  
+        DefaultCategoryDataset dataset = createDataset();
+        // Create chart  
+        JFreeChart chart = ChartFactory.createLineChart(
+                "Site Traffic", // Chart title  
+                "Date", // X-Axis Label  
+                "Number of Visitor", // Y-Axis Label  
+                dataset
+        );
+        ChartPanel panel = new ChartPanel(chart);
+        panel.setSize(500,400);
         initComponents();
+        PanelDashboard.add(panel);
         setKomponen();
         setTampilan();
     }
@@ -33,6 +51,7 @@ public class HomeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         PanelJudul2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -45,7 +64,7 @@ public class HomeView extends javax.swing.JFrame {
         ButtonLogout = new javax.swing.JButton();
         PanelIsi = new javax.swing.JPanel();
         PanelDashboard = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         PanelLapangan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         PanelToupUp = new javax.swing.JPanel();
@@ -54,6 +73,8 @@ public class HomeView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         PanelTransaksi = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,23 +178,23 @@ public class HomeView extends javax.swing.JFrame {
         PanelIsi.setBackground(new java.awt.Color(255, 255, 255));
         PanelIsi.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setText("Panel Dashboard");
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout PanelDashboardLayout = new javax.swing.GroupLayout(PanelDashboard);
         PanelDashboard.setLayout(PanelDashboardLayout);
         PanelDashboardLayout.setHorizontalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDashboardLayout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(jLabel3)
-                .addContainerGap(207, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDashboardLayout.createSequentialGroup()
+                .addContainerGap(470, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(22, 22, 22))
         );
         PanelDashboardLayout.setVerticalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDashboardLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel3)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jLabel1)
+                .addContainerGap(356, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
@@ -326,11 +347,11 @@ public class HomeView extends javax.swing.JFrame {
         setTampilan();
     }//GEN-LAST:event_ButtonTransaksiActionPerformed
     private void setKomponen() {
-        arrPanel = new JPanel[]{PanelDashboard,PanelLapangan,PanelToupUp,PanelSetting,PanelTransaksi};
-        arrButton = new JButton[]{ButtonDashboard, ButtonLapangan,ButtonTopup,ButtonSetting,ButtonTransaksi};
-        arrColor = new Color[]{Color.WHITE, Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE};
+        arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
+        arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
+        arrColor = new Color[]{Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE};
     }
-    
+
     private void setTampilan() {
 
         for (int i = 0; i < arrPanel.length; i++) {
@@ -347,6 +368,33 @@ public class HomeView extends javax.swing.JFrame {
             }
         }
     }
+
+    private DefaultCategoryDataset createDataset() {
+
+        String series1 = "Visitor";
+        String series2 = "Unique Visitor";
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        dataset.addValue(200, series1, "2016-12-19");
+        dataset.addValue(150, series1, "2016-12-20");
+        dataset.addValue(100, series1, "2016-12-21");
+        dataset.addValue(210, series1, "2016-12-22");
+        dataset.addValue(240, series1, "2016-12-23");
+        dataset.addValue(195, series1, "2016-12-24");
+        dataset.addValue(245, series1, "2016-12-25");
+
+        dataset.addValue(150, series2, "2016-12-19");
+        dataset.addValue(130, series2, "2016-12-20");
+        dataset.addValue(95, series2, "2016-12-21");
+        dataset.addValue(195, series2, "2016-12-22");
+        dataset.addValue(200, series2, "2016-12-23");
+        dataset.addValue(180, series2, "2016-12-24");
+        dataset.addValue(230, series2, "2016-12-25");
+
+        return dataset;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -397,17 +445,18 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelSetting;
     private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-JPanel[] arrPanel;
-JButton[] arrButton;
-Color[] arrColor;
+    JPanel[] arrPanel;
+    JButton[] arrButton;
+    Color[] arrColor;
 
-int panelPilihan;
+    int panelPilihan;
 }

@@ -85,6 +85,7 @@ public class LoginView extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Verdana", 2, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,7 +173,7 @@ public class LoginView extends javax.swing.JFrame {
             new HomeView().setVisible(true);
         }
         else{
-            System.out.println("invalid login");
+            jLabel5.setText("Invalid Login");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
