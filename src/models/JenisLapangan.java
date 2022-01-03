@@ -57,7 +57,7 @@ public class JenisLapangan extends Model{
     public void save() {
         try {
             this.dbConn.stm.execute(this.savePrefix
-                    + String.format("`jenis_lapangan`) VALUES (%s)",
+                    + String.format("(`jenis_lapangan`) VALUES ('%s')",
                             this.jenis_lapangan));
         } catch (SQLException ex) {
             Logger.getLogger(Rental.class.getName()).log(Level.SEVERE, null, ex);

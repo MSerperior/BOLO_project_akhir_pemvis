@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
+import models.JenisLapangan;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -81,6 +81,8 @@ public class HomeView extends javax.swing.JFrame {
         rentangChoice = new java.awt.Choice();
         PanelLapangan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        tambahLapangan = new javax.swing.JButton();
+        tambahJenisLapangan = new javax.swing.JButton();
         PanelToupUp = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         PanelSetting = new javax.swing.JPanel();
@@ -218,21 +220,43 @@ public class HomeView extends javax.swing.JFrame {
 
         jLabel2.setText("Panel Lapangan");
 
+        tambahLapangan.setText("Tambah Lapangan");
+        tambahLapangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahLapanganActionPerformed(evt);
+            }
+        });
+
+        tambahJenisLapangan.setText("Tambah Jenis Lapangan");
+        tambahJenisLapangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahJenisLapanganActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelLapanganLayout = new javax.swing.GroupLayout(PanelLapangan);
         PanelLapangan.setLayout(PanelLapanganLayout);
         PanelLapanganLayout.setHorizontalGroup(
             PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLapanganLayout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addContainerGap()
+                .addComponent(tambahLapangan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tambahJenisLapangan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addGap(117, 117, 117))
         );
         PanelLapanganLayout.setVerticalGroup(
             PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLapanganLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(jLabel2)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tambahLapangan)
+                        .addComponent(tambahJenisLapangan)))
+                .addContainerGap(391, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelLapangan, "card3");
@@ -367,10 +391,47 @@ public class HomeView extends javax.swing.JFrame {
     private void ButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLogoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonLogoutActionPerformed
+
+    private void tambahJenisLapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahJenisLapanganActionPerformed
+        // TODO add your handling code here:
+        JTextField namaJenisLapangan = new JTextField();
+        Object[] message = {
+            "Nama Jenis Lapangan:", namaJenisLapangan
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Tambah Jenis Lapangan", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            JenisLapangan jenisLapangan = new JenisLapangan(namaJenisLapangan.getText());
+            jenisLapangan.save();
+        } else {
+            System.out.println("Login canceled");
+        }
+    }//GEN-LAST:event_tambahJenisLapanganActionPerformed
+
+    private void tambahLapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahLapanganActionPerformed
+        // TODO add your handling code here:
+        JTextField username = new JTextField();
+        JTextField password = new JPasswordField();
+        Object[] message = {
+            "Username:", username,
+            "Password:", password
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Tambah Lapangan", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            if (username.getText().equals("h") && password.getText().equals("h")) {
+                System.out.println("Login successful");
+            } else {
+                System.out.println("login failed");
+            }
+        } else {
+            System.out.println("Login canceled");
+        }
+    }//GEN-LAST:event_tambahLapanganActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
-        arrColor = new Color[]{Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE};
+//        arrColor = new Color[]{Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE};
         ItemListener il = new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ie) {
@@ -391,15 +452,13 @@ public class HomeView extends javax.swing.JFrame {
     private void setTampilan() {
 
         for (int i = 0; i < arrPanel.length; i++) {
-            arrButton[i].setBackground(arrColor[i]);
+            arrButton[i].setBackground(Color.WHITE);
             arrButton[i].setForeground(Color.GRAY);
-            arrButton[0].setVisible(true);
-            arrButton[1].setVisible(true);
 
             if (i != panelPilihan) {
                 arrPanel[i].setVisible(false);
             } else if (i == panelPilihan) {
-                arrPanel[i].setBackground(arrColor[i]);
+                arrPanel[i].setBackground(Color.WHITE);
                 arrPanel[i].setVisible(true);
             }
         }
@@ -447,7 +506,7 @@ public class HomeView extends javax.swing.JFrame {
 //        dataset.addValue(230, series2, "2016-12-25");
 //        return dataset;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -510,6 +569,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private java.awt.Choice rentangChoice;
+    private javax.swing.JButton tambahJenisLapangan;
+    private javax.swing.JButton tambahLapangan;
     // End of variables declaration//GEN-END:variables
     JPanel[] arrPanel;
     JButton[] arrButton;
