@@ -50,4 +50,8 @@ public class HomeController {
             return null;
         }
     }
+    
+    public ResultSet indexJenisLapangan() throws SQLException{
+        return dbConn.stm.executeQuery("SELECT * FROM jenis_lapangan");
+    }
 }

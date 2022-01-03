@@ -18,7 +18,12 @@ public class Lapangan extends Model{
     public Lapangan(){
         super("lapangan");
     }
-    
+    public Lapangan(int id_jenis_lapangan, String nama_lapangan, int harga_per_jam) {
+        super("lapangan");
+        this.id_jenis_lapangan = id_jenis_lapangan;
+        this.nama_lapangan = nama_lapangan;
+        this.harga_per_jam = harga_per_jam;
+    }
     public Lapangan(int id_lapangan, int id_jenis_lapangan, String nama_lapangan, int harga_per_jam) {
         super("lapangan");
         this.id_lapangan = id_lapangan;
@@ -92,7 +97,7 @@ public class Lapangan extends Model{
     public void save() {
         try {
             this.dbConn.stm.execute(this.savePrefix
-                    + String.format("`id_jenis_lapangan`, `nama_lapangan`, `harga_per_jam`) VALUES (%d, %s, %d)",
+                    + String.format("(`id_jenis_lapangan`, `nama_lapangan`, `harga_per_jam`) VALUES (%d, '%s', %d)",
                             this.id_jenis_lapangan,
                             this.nama_lapangan,
                             this.harga_per_jam));

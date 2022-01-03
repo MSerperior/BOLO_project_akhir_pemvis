@@ -25,6 +25,11 @@ public class JenisLapangan extends Model{
         super("jenis_lapangan");
         this.jenis_lapangan = jenis_lapangan;
     }
+    public JenisLapangan(int id_jenis_lapangan, String jenis_lapangan) {
+        super("jenis_lapangan");
+        this.id_jenis_lapangan = id_jenis_lapangan;
+        this.jenis_lapangan = jenis_lapangan;
+    }
     /**
      * @return the id_jenis_lapangan
      */
@@ -52,7 +57,7 @@ public class JenisLapangan extends Model{
     public void setJenis_lapangan(String jenis_lapangan) {
         this.jenis_lapangan = jenis_lapangan;
     }
-
+    
     @Override
     public void save() {
         try {
@@ -77,5 +82,9 @@ public class JenisLapangan extends Model{
     @Override
     public boolean exist() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    @Override
+    public String toString(){
+        return this.jenis_lapangan;
     }
 }

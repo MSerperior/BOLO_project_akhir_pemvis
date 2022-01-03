@@ -5,17 +5,19 @@
  */
 package admin;
 
+import db.DBConnector;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.*;
-import models.JenisLapangan;
+import models.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -409,21 +411,32 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_tambahJenisLapanganActionPerformed
 
     private void tambahLapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahLapanganActionPerformed
-        // TODO add your handling code here:
-        JTextField username = new JTextField();
-        JTextField password = new JPasswordField();
+        ArrayList list = new ArrayList();
+        try {
+            // TODO add your handling code here:
+            ResultSet rs = homeController.indexJenisLapangan();
+            while (rs.next()) {
+                list.add(new JenisLapangan(rs.getInt("id_jenis_lapangan"), rs.getString("jenis_lapangan")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JTextField namaLapangan = new JTextField();
+        JSpinner hargaPerJam = new JSpinner();
+        JComboBox jenisLapangan = new JComboBox(list.toArray());
         Object[] message = {
-            "Username:", username,
-            "Password:", password
+            "Nama Lapangan:", namaLapangan,
+            "Harga Per Jam:", hargaPerJam,
+            "Jenis Lapangan:", jenisLapangan
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Tambah Lapangan", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            if (username.getText().equals("h") && password.getText().equals("h")) {
-                System.out.println("Login successful");
-            } else {
-                System.out.println("login failed");
-            }
+            JenisLapangan pilihanJenisLapangan = (JenisLapangan) jenisLapangan.getSelectedItem();
+            String nama_lapangan = namaLapangan.getText();
+            int harga_per_jam = (int) hargaPerJam.getValue();
+            Lapangan lapanganBaru = new Lapangan(pilihanJenisLapangan.getId_jenis_lapangan(), nama_lapangan, harga_per_jam);
+            lapanganBaru.save();
         } else {
             System.out.println("Login canceled");
         }
