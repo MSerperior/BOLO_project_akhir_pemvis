@@ -170,7 +170,11 @@ public class LoginView extends javax.swing.JFrame {
 
         if (admin.login()) {
             this.dispose();
-            new HomeView().setVisible(true);
+            try {
+                new HomeView().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else{
             jLabel5.setText("Invalid Login");
