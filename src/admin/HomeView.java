@@ -6,6 +6,8 @@
 package admin;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +29,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class HomeView extends javax.swing.JFrame {
 
     HomeController homeController = new HomeController();
-    DefaultCategoryDataset dataset;
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
     /**
      * Creates new form HomeView
@@ -36,10 +38,10 @@ public class HomeView extends javax.swing.JFrame {
      */
     public HomeView() throws SQLException {
 //        // Create dataset  
-//        dataset = createDataset();
+//         dataset = createDataset(1);
         // Create chart  
 
-        createDataset();
+        createDataset(0);
         JFreeChart chart = ChartFactory.createLineChart(
                 "Pendapatan", // Chart title  
                 "Date", // X-Axis Label  
@@ -76,8 +78,7 @@ public class HomeView extends javax.swing.JFrame {
         ButtonLogout = new javax.swing.JButton();
         PanelIsi = new javax.swing.JPanel();
         PanelDashboard = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        rentangChoice = new java.awt.Choice();
         PanelLapangan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         PanelToupUp = new javax.swing.JPanel();
@@ -196,29 +197,21 @@ public class HomeView extends javax.swing.JFrame {
         PanelIsi.setBackground(new java.awt.Color(255, 255, 255));
         PanelIsi.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("jLabel1");
-
-        jLabel3.setText("jLabel3");
-
         javax.swing.GroupLayout PanelDashboardLayout = new javax.swing.GroupLayout(PanelDashboard);
         PanelDashboard.setLayout(PanelDashboardLayout);
         PanelDashboardLayout.setHorizontalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDashboardLayout.createSequentialGroup()
-                .addContainerGap(470, Short.MAX_VALUE)
-                .addGroup(PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(22, 22, 22))
+            .addGroup(PanelDashboardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rentangChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(442, Short.MAX_VALUE))
         );
         PanelDashboardLayout.setVerticalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDashboardLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(56, 56, 56)
-                .addComponent(jLabel3)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(rentangChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
@@ -378,6 +371,21 @@ public class HomeView extends javax.swing.JFrame {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
         arrColor = new Color[]{Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE};
+        ItemListener il = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                int i = rentangChoice.getSelectedIndex();
+                System.out.println(i);
+                try {
+                    createDataset(i);
+                } catch (SQLException ex) {
+                    Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        rentangChoice.addItem("harian");
+        rentangChoice.addItem("bulanan");
+        rentangChoice.addItemListener(il);
     }
 
     private void setTampilan() {
@@ -397,15 +405,15 @@ public class HomeView extends javax.swing.JFrame {
         }
     }
 
-    private void createDataset() throws SQLException {
-        int i = 2;
+    private void createDataset(int i) throws SQLException {
+//        int i = 1;
 
         String series1 = "Pendapatan Top Up";
         String series2 = "Pendapatan Rental";
 
-        dataset = new DefaultCategoryDataset();
-
-        if (i == 1) {
+//        dataset = new DefaultCategoryDataset();
+        dataset.clear();
+        if (i == 0) {
             ResultSet rs1 = homeController.getRiwayatTopUp(i);
             while (rs1.next()) {
                 dataset.addValue(rs1.getBigDecimal("pendapatan"), series1, rs1.getString("tanggal_top_up"));
@@ -427,6 +435,7 @@ public class HomeView extends javax.swing.JFrame {
                 BigDecimal bulan = rs2.getBigDecimal("bulan");
                 dataset.addValue(rs2.getBigDecimal("pendapatan"), series2, tahun + "-" + bulan);
             }
+//            return dataset;
         }
 
 //        dataset.addValue(150, series2, "2016-12-19");
@@ -436,8 +445,9 @@ public class HomeView extends javax.swing.JFrame {
 //        dataset.addValue(200, series2, "2016-12-23");
 //        dataset.addValue(180, series2, "2016-12-24");
 //        dataset.addValue(230, series2, "2016-12-25");
+//        return dataset;
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -493,14 +503,13 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private java.awt.Choice rentangChoice;
     // End of variables declaration//GEN-END:variables
     JPanel[] arrPanel;
     JButton[] arrButton;
