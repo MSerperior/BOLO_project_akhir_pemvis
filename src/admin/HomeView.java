@@ -17,6 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 import models.*;
 
 import org.jfree.chart.ChartFactory;
@@ -82,9 +84,10 @@ public class HomeView extends javax.swing.JFrame {
         PanelDashboard = new javax.swing.JPanel();
         rentangChoice = new java.awt.Choice();
         PanelLapangan = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         tambahLapangan = new javax.swing.JButton();
         tambahJenisLapangan = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lapanganTable = new javax.swing.JTable();
         PanelToupUp = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         PanelSetting = new javax.swing.JPanel();
@@ -215,12 +218,10 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelDashboardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rentangChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addContainerGap(444, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
-
-        jLabel2.setText("Panel Lapangan");
 
         tambahLapangan.setText("Tambah Lapangan");
         tambahLapangan.addActionListener(new java.awt.event.ActionListener() {
@@ -236,29 +237,44 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
+        lapanganTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID Lapangan", " Nama Lapangan", "Jenis Lapangan", "Harga per Jam"
+            }
+        ));
+        jScrollPane1.setViewportView(lapanganTable);
+
         javax.swing.GroupLayout PanelLapanganLayout = new javax.swing.GroupLayout(PanelLapangan);
         PanelLapangan.setLayout(PanelLapanganLayout);
         PanelLapanganLayout.setHorizontalGroup(
             PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLapanganLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tambahLapangan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tambahJenisLapangan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(117, 117, 117))
+                .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                    .addGroup(PanelLapanganLayout.createSequentialGroup()
+                        .addComponent(tambahLapangan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tambahJenisLapangan)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         PanelLapanganLayout.setVerticalGroup(
             PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLapanganLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tambahLapangan)
-                        .addComponent(tambahJenisLapangan)))
-                .addContainerGap(391, Short.MAX_VALUE))
+                .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tambahLapangan)
+                    .addComponent(tambahJenisLapangan))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         PanelIsi.add(PanelLapangan, "card3");
@@ -272,14 +288,14 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelToupUpLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(jLabel4)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         PanelToupUpLayout.setVerticalGroup(
             PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelToupUpLayout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addComponent(jLabel4)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelToupUp, "card4");
@@ -293,14 +309,14 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelSettingLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(jLabel5)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         PanelSettingLayout.setVerticalGroup(
             PanelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSettingLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(jLabel5)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelSetting, "card5");
@@ -321,7 +337,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelTransaksiLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(jLabel6)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelTransaksi, "card6");
@@ -370,6 +386,11 @@ public class HomeView extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelPilihan = 1;
         setTampilan();
+        try {
+            updateLapanganTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ButtonLapanganActionPerformed
 
     private void ButtonTopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTopupActionPerformed
@@ -439,6 +460,11 @@ public class HomeView extends javax.swing.JFrame {
             lapanganBaru.save();
         } else {
             System.out.println("Login canceled");
+        }
+        try {
+            updateLapanganTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tambahLapanganActionPerformed
     private void setKomponen() {
@@ -520,6 +546,21 @@ public class HomeView extends javax.swing.JFrame {
 //        return dataset;
     }
 
+    private void updateLapanganTable() throws SQLException {
+        int i = 0;
+        Object data[][] = new Object[100][4];
+        String kolom[] = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
+        ResultSet rs = homeController.dbConn.stm.executeQuery("SELECT * FROM lapangan INNER JOIN jenis_lapangan USING(id_jenis_lapangan) ORDER BY id_lapangan");
+        while (rs.next()) {
+            data[i][0] = rs.getInt("id_lapangan");
+            data[i][1] = rs.getString("nama_lapangan");
+            data[i][2] = rs.getString("jenis_lapangan");
+            data[i][3] = rs.getInt("harga_per_jam");
+            i++;
+        }
+        lapanganTable.setModel(new javax.swing.table.DefaultTableModel(data,kolom));
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -575,12 +616,13 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable lapanganTable;
     private java.awt.Choice rentangChoice;
     private javax.swing.JButton tambahJenisLapangan;
     private javax.swing.JButton tambahLapangan;
