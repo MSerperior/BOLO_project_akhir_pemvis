@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.*;
 
@@ -32,8 +33,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class HomeView extends javax.swing.JFrame {
 
+    Object data[][] = new Object[100][4];
+    String kolom[] = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
     HomeController homeController = new HomeController();
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    TableModel lapanganTM = new DefaultTableModel(data,kolom);
 
     /**
      * Creates new form HomeView
@@ -88,6 +92,8 @@ public class HomeView extends javax.swing.JFrame {
         tambahJenisLapangan = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lapanganTable = new javax.swing.JTable();
+        editLapanganButton = new javax.swing.JButton();
+        deleteLapanganButton = new javax.swing.JButton();
         PanelToupUp = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         PanelSetting = new javax.swing.JPanel();
@@ -247,8 +253,37 @@ public class HomeView extends javax.swing.JFrame {
             new String [] {
                 "ID Lapangan", " Nama Lapangan", "Jenis Lapangan", "Harga per Jam"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        lapanganTable.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lapanganTableFocusLost(evt);
+            }
+        });
+        lapanganTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lapanganTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lapanganTable);
+
+        editLapanganButton.setText("Edit");
+        editLapanganButton.setEnabled(false);
+        editLapanganButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editLapanganButtonActionPerformed(evt);
+            }
+        });
+
+        deleteLapanganButton.setText("Delete");
+        deleteLapanganButton.setEnabled(false);
 
         javax.swing.GroupLayout PanelLapanganLayout = new javax.swing.GroupLayout(PanelLapangan);
         PanelLapangan.setLayout(PanelLapanganLayout);
@@ -262,6 +297,10 @@ public class HomeView extends javax.swing.JFrame {
                         .addComponent(tambahLapangan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tambahJenisLapangan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editLapanganButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteLapanganButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -271,7 +310,9 @@ public class HomeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tambahLapangan)
-                    .addComponent(tambahJenisLapangan))
+                    .addComponent(tambahJenisLapangan)
+                    .addComponent(editLapanganButton)
+                    .addComponent(deleteLapanganButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -467,6 +508,31 @@ public class HomeView extends javax.swing.JFrame {
             Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tambahLapanganActionPerformed
+
+    private void lapanganTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lapanganTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = lapanganTable.getSelectedRow();
+        if (selectedRow != -1) {
+            editLapanganButton.setEnabled(true);
+            deleteLapanganButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_lapanganTableMouseClicked
+
+    private void editLapanganButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLapanganButtonActionPerformed
+        // TODO add your handling code here:
+        int i = lapanganTable.getSelectedRow();
+        System.out.println(i);
+//        lapanganTable.getValueAt(i, i);
+    }//GEN-LAST:event_editLapanganButtonActionPerformed
+
+    private void lapanganTableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lapanganTableFocusLost
+        // TODO add your handling code here:
+        int selectedRow = lapanganTable.getSelectedRow();
+        if (selectedRow == -1) {
+            editLapanganButton.setEnabled(false);
+            deleteLapanganButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_lapanganTableFocusLost
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
@@ -548,17 +614,16 @@ public class HomeView extends javax.swing.JFrame {
 
     private void updateLapanganTable() throws SQLException {
         int i = 0;
-        Object data[][] = new Object[100][4];
-        String kolom[] = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
         ResultSet rs = homeController.dbConn.stm.executeQuery("SELECT * FROM lapangan INNER JOIN jenis_lapangan USING(id_jenis_lapangan) ORDER BY id_lapangan");
         while (rs.next()) {
-            data[i][0] = rs.getInt("id_lapangan");
-            data[i][1] = rs.getString("nama_lapangan");
-            data[i][2] = rs.getString("jenis_lapangan");
-            data[i][3] = rs.getInt("harga_per_jam");
+            lapanganTM.setValueAt(rs.getInt("id_lapangan"), i, 0);
+            lapanganTM.setValueAt(rs.getString("nama_lapangan"), i, 1);
+            lapanganTM.setValueAt(rs.getString("jenis_lapangan"), i, 2);
+            lapanganTM.setValueAt(rs.getInt("harga_per_jam"), i, 3);
             i++;
         }
-        lapanganTable.setModel(new javax.swing.table.DefaultTableModel(data,kolom));
+//        lapanganTM.TableModel tm = new javax.swing.table.DefaultTableModel(data, kolom);
+        lapanganTable.setModel(lapanganTM);
     }
 
     /**
@@ -615,6 +680,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelSetting;
     private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
+    private javax.swing.JButton deleteLapanganButton;
+    private javax.swing.JButton editLapanganButton;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
