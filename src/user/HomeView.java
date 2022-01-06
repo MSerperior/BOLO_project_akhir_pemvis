@@ -227,14 +227,12 @@ public class HomeView extends javax.swing.JFrame {
         PanelIsi.setBackground(new java.awt.Color(255, 255, 255));
         PanelIsi.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout PanelDashboardLayout = new javax.swing.GroupLayout(PanelDashboard);
         PanelDashboard.setLayout(PanelDashboardLayout);
         PanelDashboardLayout.setHorizontalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDashboardLayout.createSequentialGroup()
-                .addContainerGap(470, Short.MAX_VALUE)
+                .addContainerGap(504, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(22, 22, 22))
         );
@@ -243,7 +241,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelDashboardLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
