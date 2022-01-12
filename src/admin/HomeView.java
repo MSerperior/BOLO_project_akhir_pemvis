@@ -284,6 +284,11 @@ public class HomeView extends javax.swing.JFrame {
 
         deleteLapanganButton.setText("Delete");
         deleteLapanganButton.setEnabled(false);
+        deleteLapanganButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteLapanganButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelLapanganLayout = new javax.swing.GroupLayout(PanelLapangan);
         PanelLapangan.setLayout(PanelLapanganLayout);
@@ -574,6 +579,24 @@ public class HomeView extends javax.swing.JFrame {
             deleteLapanganButton.setEnabled(false);
         }
     }//GEN-LAST:event_lapanganTableFocusLost
+
+    private void deleteLapanganButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteLapanganButtonActionPerformed
+        // TODO add your handling code here:
+        int i = lapanganTable.getSelectedRow();
+        Lapangan lapangan = new Lapangan();
+        lapangan.setId_lapangan((int) lapanganTM.getValueAt(i, 0));
+        int option = JOptionPane.showConfirmDialog(null, "Yakin hapus lapangan?", "Hapus Lapangan", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            lapangan.delete();
+        } else {
+            System.out.println("Delete canceled");
+        }
+        try {
+            updateLapanganTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteLapanganButtonActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
@@ -663,6 +686,10 @@ public class HomeView extends javax.swing.JFrame {
             lapanganTM.setValueAt(rs.getInt("harga_per_jam"), i, 3);
             i++;
         }
+        lapanganTM.setValueAt(null, i, 0);
+        lapanganTM.setValueAt(null, i, 1);
+        lapanganTM.setValueAt(null, i, 2);
+        lapanganTM.setValueAt(null, i, 3);
 //        lapanganTM.TableModel tm = new javax.swing.table.DefaultTableModel(data, kolom);
         lapanganTable.setModel(lapanganTM);
     }

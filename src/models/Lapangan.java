@@ -108,7 +108,13 @@ public class Lapangan extends Model{
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.dbConn.stm.execute(this.deletePrefix
+                    + String.format("WHERE id_lapangan=%d",
+                            this.id_lapangan));
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
