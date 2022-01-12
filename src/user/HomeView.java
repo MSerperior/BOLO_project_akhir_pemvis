@@ -523,17 +523,20 @@ public class HomeView extends javax.swing.JFrame {
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(lapanganFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lapanganFLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(buttonLapanganF))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel27)
+                        .addGap(83, 83, 83))
                     .addGroup(lapanganFLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(lapanganFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel28)))
-                    .addGroup(lapanganFLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel27)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(lapanganFLayout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(buttonLapanganF))
+                            .addGroup(lapanganFLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(lapanganFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel28))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         lapanganFLayout.setVerticalGroup(
             lapanganFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -850,7 +853,6 @@ public class HomeView extends javax.swing.JFrame {
                 arrPanel[i].setVisible(true);
             }
         }
-        jPanel3.removeAll();
     }
 
     private DefaultCategoryDataset createDataset() {
