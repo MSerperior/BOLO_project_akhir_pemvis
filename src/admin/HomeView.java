@@ -521,8 +521,49 @@ public class HomeView extends javax.swing.JFrame {
     private void editLapanganButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editLapanganButtonActionPerformed
         // TODO add your handling code here:
         int i = lapanganTable.getSelectedRow();
-        System.out.println(i);
-//        lapanganTable.getValueAt(i, i);
+        Lapangan lapangan = new Lapangan();
+        lapangan.setId_lapangan((int) lapanganTM.getValueAt(i, 0));
+        lapangan.setNama_lapangan((String) lapanganTM.getValueAt(i, 1));
+        lapangan.setHarga_per_jam((int) lapanganTM.getValueAt(i, 3));
+        
+        String jenisLapangan = (String) lapanganTM.getValueAt(i, 2);
+        
+        ArrayList list = new ArrayList();
+        try {
+            // TODO add your handling code here:
+            ResultSet rs = homeController.indexJenisLapangan();
+            while (rs.next()) {
+                list.add(new JenisLapangan(rs.getInt("id_jenis_lapangan"), rs.getString("jenis_lapangan")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JTextField namaLapanganTF = new JTextField(lapangan.getNama_lapangan());
+        JSpinner hargaPerJamSpin = new JSpinner();
+        JComboBox jenisLapanganCB = new JComboBox(list.toArray());
+        hargaPerJamSpin.setValue(lapangan.getHarga_per_jam());
+        jenisLapanganCB.setSelectedItem(jenisLapangan);
+        
+        Object[] message = {
+            "Nama Lapangan:", namaLapanganTF,
+            "Harga Per Jam:", hargaPerJamSpin,
+            "Jenis Lapangan:", jenisLapanganCB
+        };
+        int option = JOptionPane.showConfirmDialog(null, message, "Edit Lapangan", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            JenisLapangan pilihanJenisLapangan = (JenisLapangan) jenisLapanganCB.getSelectedItem();
+            lapangan.setNama_lapangan(namaLapanganTF.getText());
+            lapangan.setHarga_per_jam((int) hargaPerJamSpin.getValue());
+            lapangan.setId_jenis_lapangan(pilihanJenisLapangan.getId_jenis_lapangan());
+            lapangan.update();
+        } else {
+            System.out.println("Edit canceled");
+        }
+        try {
+            updateLapanganTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_editLapanganButtonActionPerformed
 
     private void lapanganTableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lapanganTableFocusLost

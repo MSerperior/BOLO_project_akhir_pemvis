@@ -115,9 +115,10 @@ public class Lapangan extends Model{
     public void update() {
         try {
             this.dbConn.stm.execute(this.updatePrefix
-                    + String.format("nama_lapangan='%s', harga_per_jam=%d WHERE id_lapangan=%d",
+                    + String.format("nama_lapangan='%s', harga_per_jam=%d, id_jenis_lapangan=%d WHERE id_lapangan=%d",
                             this.nama_lapangan,
                             this.harga_per_jam,
+                            this.id_jenis_lapangan,
                             this.id_lapangan));
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
