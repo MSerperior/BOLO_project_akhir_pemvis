@@ -49,7 +49,7 @@ public class HomeView extends javax.swing.JFrame {
         PanelMenu = new javax.swing.JPanel();
         ButtonDashboard = new javax.swing.JButton();
         ButtonLapangan = new javax.swing.JButton();
-        ButtonTopup = new javax.swing.JButton();
+        PemesananTopup = new javax.swing.JButton();
         ButtonSetting = new javax.swing.JButton();
         ButtonTransaksi = new javax.swing.JButton();
         ButtonLogout = new javax.swing.JButton();
@@ -116,8 +116,10 @@ public class HomeView extends javax.swing.JFrame {
         buttonLapanganH = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        PanelToupUp = new javax.swing.JPanel();
+        PanelRiwayatPemesanan = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableRiwayatPemesanan = new javax.swing.JTable();
         PanelSetting = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         PanelTransaksi = new javax.swing.JPanel();
@@ -170,10 +172,10 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
-        ButtonTopup.setText("Top Up");
-        ButtonTopup.addActionListener(new java.awt.event.ActionListener() {
+        PemesananTopup.setText("Pemesanan");
+        PemesananTopup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonTopupActionPerformed(evt);
+                PemesananTopupActionPerformed(evt);
             }
         });
 
@@ -202,7 +204,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonTopup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PemesananTopup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -216,7 +218,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonLapangan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonTopup)
+                .addComponent(PemesananTopup)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonSetting)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,7 +303,7 @@ public class HomeView extends javax.swing.JFrame {
                     .addGroup(PanelDashboardLayout.createSequentialGroup()
                         .addGap(187, 187, 187)
                         .addComponent(jLabel41)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         PanelDashboardLayout.setVerticalGroup(
             PanelDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +312,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addComponent(jLabel41)
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
@@ -708,7 +710,7 @@ public class HomeView extends javax.swing.JFrame {
                         .addGroup(lapanganHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37)
                             .addComponent(jLabel36))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         lapanganHLayout.setVerticalGroup(
             lapanganHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -770,32 +772,51 @@ public class HomeView extends javax.swing.JFrame {
         );
         PanelLapanganLayout.setVerticalGroup(
             PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
 
         PanelIsi.add(PanelLapangan, "card3");
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel4.setText("TopUp");
+        jLabel4.setText("RIWAYAT PEMESANAN");
 
-        javax.swing.GroupLayout PanelToupUpLayout = new javax.swing.GroupLayout(PanelToupUp);
-        PanelToupUp.setLayout(PanelToupUpLayout);
-        PanelToupUpLayout.setHorizontalGroup(
-            PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelToupUpLayout.createSequentialGroup()
-                .addGap(228, 228, 228)
+        tableRiwayatPemesanan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tableRiwayatPemesanan);
+
+        javax.swing.GroupLayout PanelRiwayatPemesananLayout = new javax.swing.GroupLayout(PanelRiwayatPemesanan);
+        PanelRiwayatPemesanan.setLayout(PanelRiwayatPemesananLayout);
+        PanelRiwayatPemesananLayout.setHorizontalGroup(
+            PanelRiwayatPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelRiwayatPemesananLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
                 .addComponent(jLabel4)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PanelRiwayatPemesananLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        PanelToupUpLayout.setVerticalGroup(
-            PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelToupUpLayout.createSequentialGroup()
+        PanelRiwayatPemesananLayout.setVerticalGroup(
+            PanelRiwayatPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelRiwayatPemesananLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        PanelIsi.add(PanelToupUp, "card4");
+        PanelIsi.add(PanelRiwayatPemesanan, "card4");
 
         jLabel5.setText("Panel Setting");
 
@@ -806,14 +827,14 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelSettingLayout.createSequentialGroup()
                 .addGap(223, 223, 223)
                 .addComponent(jLabel5)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
         PanelSettingLayout.setVerticalGroup(
             PanelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSettingLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(jLabel5)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelSetting, "card5");
@@ -840,7 +861,7 @@ public class HomeView extends javax.swing.JFrame {
             PanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(PanelTransaksiLayout.createSequentialGroup()
                 .addGap(112, 112, 112)
@@ -853,7 +874,7 @@ public class HomeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -906,11 +927,11 @@ public class HomeView extends javax.swing.JFrame {
         setTampilan();
     }//GEN-LAST:event_ButtonLapanganActionPerformed
 
-    private void ButtonTopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTopupActionPerformed
+    private void PemesananTopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PemesananTopupActionPerformed
         // TODO add your handling code here:
         panelPilihan = 2;
         setTampilan();
-    }//GEN-LAST:event_ButtonTopupActionPerformed
+    }//GEN-LAST:event_PemesananTopupActionPerformed
 
     private void ButtonSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSettingActionPerformed
         // TODO add your handling code here:
@@ -924,8 +945,8 @@ public class HomeView extends javax.swing.JFrame {
         setTampilan();
     }//GEN-LAST:event_ButtonTransaksiActionPerformed
     private void setKomponen() {
-        arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
-        arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
+        arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelRiwayatPemesanan, PanelSetting, PanelTransaksi};
+        arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, PemesananTopup, ButtonSetting, ButtonTransaksi};
         arrColor = new Color[]{Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE};
     }
 
@@ -1087,16 +1108,16 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JButton ButtonLapangan;
     private javax.swing.JButton ButtonLogout;
     private javax.swing.JButton ButtonSetting;
-    private javax.swing.JButton ButtonTopup;
     private javax.swing.JButton ButtonTransaksi;
     private javax.swing.JPanel PanelDashboard;
     private javax.swing.JPanel PanelIsi;
     private javax.swing.JPanel PanelJudul2;
     private javax.swing.JPanel PanelLapangan;
     private javax.swing.JPanel PanelMenu;
+    private javax.swing.JPanel PanelRiwayatPemesanan;
     private javax.swing.JPanel PanelSetting;
-    private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
+    private javax.swing.JButton PemesananTopup;
     private javax.swing.JButton buttonLapanganA;
     private javax.swing.JButton buttonLapanganB;
     private javax.swing.JButton buttonLapanganC;
@@ -1154,6 +1175,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel lapanganA;
     private javax.swing.JPanel lapanganB;
     private javax.swing.JPanel lapanganC;
@@ -1164,6 +1186,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel lapanganH;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JLabel saldoLabel;
+    private javax.swing.JTable tableRiwayatPemesanan;
     private javax.swing.JTable transaksiUserTable;
     // End of variables declaration//GEN-END:variables
     JPanel[] arrPanel;
