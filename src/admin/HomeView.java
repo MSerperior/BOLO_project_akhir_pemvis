@@ -99,7 +99,9 @@ public class HomeView extends javax.swing.JFrame {
         PanelSetting = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         PanelTransaksi = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        transaksiadminTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -181,7 +183,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(ButtonDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 102, Short.MAX_VALUE)
                     .addComponent(ButtonLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonTopup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -297,7 +299,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelLapanganLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(PanelLapanganLayout.createSequentialGroup()
                         .addComponent(tambahLapangan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -331,17 +333,11 @@ public class HomeView extends javax.swing.JFrame {
         PanelToupUp.setLayout(PanelToupUpLayout);
         PanelToupUpLayout.setHorizontalGroup(
             PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelToupUpLayout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel4)
-                .addContainerGap(229, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
         );
         PanelToupUpLayout.setVerticalGroup(
             PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelToupUpLayout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel4)
-                .addContainerGap(330, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
 
         PanelIsi.add(PanelToupUp, "card4");
@@ -367,23 +363,42 @@ public class HomeView extends javax.swing.JFrame {
 
         PanelIsi.add(PanelSetting, "card5");
 
-        jLabel6.setText("Panel Transaksi");
+        transaksiadminTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(transaksiadminTable);
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setText("RIWAYAT TRANSAKSI");
 
         javax.swing.GroupLayout PanelTransaksiLayout = new javax.swing.GroupLayout(PanelTransaksi);
         PanelTransaksi.setLayout(PanelTransaksiLayout);
         PanelTransaksiLayout.setHorizontalGroup(
             PanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTransaksiLayout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel6)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PanelTransaksiLayout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelTransaksiLayout.setVerticalGroup(
             PanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTransaksiLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel6)
-                .addContainerGap(323, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTransaksiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         PanelIsi.add(PanelTransaksi, "card6");
@@ -751,16 +766,18 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JButton deleteLapanganButton;
     private javax.swing.JButton editLapanganButton;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable lapanganTable;
     private java.awt.Choice rentangChoice;
     private javax.swing.JButton tambahJenisLapangan;
     private javax.swing.JButton tambahLapangan;
+    private javax.swing.JTable transaksiadminTable;
     // End of variables declaration//GEN-END:variables
     JPanel[] arrPanel;
     JButton[] arrButton;
