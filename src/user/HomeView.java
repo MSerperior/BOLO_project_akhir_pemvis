@@ -22,6 +22,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class HomeView extends javax.swing.JFrame {
 
+    HomeController homeController = new HomeController();
+    
     /**
      * Creates new form HomeView
      */
