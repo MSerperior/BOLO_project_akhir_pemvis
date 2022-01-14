@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/models/Model.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>14</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/Rental.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/Gambar.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/Main.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/RiwayatTopUp.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/user/HomeController.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/user/LoginView.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/User.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/Lapangan.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/Admin.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/HomeController.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/user/LoginController.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/DBConnector.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/LoginController.java</file>
+            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/models/Lapangan.java</file>
             <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/HomeView.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/LoginView.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/db/JenisLapangan.java</file>
-            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/user/HomeView.java</file>
         </group>
     </open-files>
 </project-private>
