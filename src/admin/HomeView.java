@@ -226,7 +226,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelDashboardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rentangChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelDashboard, "card2");
@@ -358,7 +358,7 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(PanelSettingLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(jLabel5)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelSetting, "card5");
@@ -397,8 +397,9 @@ public class HomeView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelTransaksi, "card6");
