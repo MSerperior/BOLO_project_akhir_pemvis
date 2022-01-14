@@ -6,6 +6,10 @@
 package user;
 
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.JButton;
 import javax.swing.*;
@@ -23,7 +27,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class HomeView extends javax.swing.JFrame {
 
     HomeController homeController = new HomeController();
-    
+
     /**
      * Creates new form HomeView
      */
@@ -826,7 +830,11 @@ public class HomeView extends javax.swing.JFrame {
     private void ButtonLapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLapanganActionPerformed
         // TODO add your handling code here:
         panelPilihan = 1;
-        getListLapangan();
+        try {
+            getListLapangan();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setTampilan();
     }//GEN-LAST:event_ButtonLapanganActionPerformed
 
@@ -870,7 +878,7 @@ public class HomeView extends javax.swing.JFrame {
         }
     }
 
-    private void getListLapangan() {
+    private void getListLapangan() throws SQLException {
         jPanel3.removeAll();
         JLabel imageLabel = new JLabel();
         JLabel judulLabel = new JLabel();
@@ -879,89 +887,82 @@ public class HomeView extends javax.swing.JFrame {
         JButton buttonLapangan = new JButton();
         JPanel panelLapangan = new JPanel();
 
-        panelLapangan.setBackground(Color.WHITE);
-        javax.swing.GroupLayout lapanganALayout = new javax.swing.GroupLayout(panelLapangan);
-        panelLapangan.setLayout(lapanganALayout);
-        lapanganALayout.setHorizontalGroup(
-                lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(lapanganALayout.createSequentialGroup()
-                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(lapanganALayout.createSequentialGroup()
-                                                .addGap(79, 79, 79)
-                                                .addComponent(judulLabel))
-                                        .addGroup(lapanganALayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(hargaLabel)
-                                                        .addComponent(ukuranLabel)))
-                                        .addGroup(lapanganALayout.createSequentialGroup()
-                                                .addGap(112, 112, 112)
-                                                .addComponent(buttonLapangan)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        lapanganALayout.setVerticalGroup(
-                lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(lapanganALayout.createSequentialGroup()
-                                .addComponent(judulLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ukuranLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(hargaLabel)
-                                .addGap(33, 33, 33)
-                                .addComponent(buttonLapangan)
-                                .addContainerGap())
-        );
-
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user/images/Lapangan_A.jpg")));
-
-        judulLabel.setFont(new java.awt.Font("Verdana", 1, 18));
-        judulLabel.setText("LAPANGAN A");
-
-        ukuranLabel.setFont(new java.awt.Font("Verdana", 0, 14));
-        ukuranLabel.setText("Ukuran : 30m x 15m");
-
-        hargaLabel.setFont(new java.awt.Font("Verdana", 0, 14));
-        hargaLabel.setText("Harga : Rp50.000/jam");
-
-        buttonLapangan.setText("PESAN");
+        ResultSet rs = homeController.getLapangan();
 
         // Setelah loop selesai
         jPanel3.setBackground(Color.WHITE);
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        GroupLayout.ParallelGroup panel3HorizontalGroup = jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING);
-        panel3HorizontalGroup.addComponent(panelLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
-        panel3HorizontalGroup.addComponent(lapanganB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
         GroupLayout.SequentialGroup panel3InnerVerticalGroup = jPanel3Layout.createSequentialGroup();
         GroupLayout.ParallelGroup panel3VerticalGroup = jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING);
+        GroupLayout.ParallelGroup panel3HorizontalGroup = jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING);
+        jPanel3.setLayout(jPanel3Layout);
 
-//        jPanel3Layout.setVerticalGroup(
-//                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGroup(jPanel3Layout.createSequentialGroup()
-//                                .addComponent(lapanganA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(lapanganH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addGap(0, 0, Short.MAX_VALUE))
-//        );
-        panel3InnerVerticalGroup
+//        panel3HorizontalGroup.addComponent(panelLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE); panel3HorizontalGroup.addComponent(lapanganB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+//
+//        panel3InnerVerticalGroup
+//                .addComponent(panelLapangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
+
+        while (rs.next()) {
+            imageLabel = new JLabel();
+            judulLabel = new JLabel();
+            ukuranLabel = new JLabel();
+            hargaLabel = new JLabel();
+            buttonLapangan = new JButton();
+            panelLapangan = new JPanel();
+            
+            panelLapangan.setBackground(Color.WHITE);
+            javax.swing.GroupLayout lapanganALayout = new javax.swing.GroupLayout(panelLapangan);
+            panelLapangan.setLayout(lapanganALayout);
+            lapanganALayout.setHorizontalGroup(
+                    lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(lapanganALayout.createSequentialGroup()
+                                    .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(lapanganALayout.createSequentialGroup()
+                                                    .addGap(79, 79, 79)
+                                                    .addComponent(judulLabel))
+                                            .addGroup(lapanganALayout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(hargaLabel)
+                                                            .addComponent(ukuranLabel)))
+                                            .addGroup(lapanganALayout.createSequentialGroup()
+                                                    .addGap(112, 112, 112)
+                                                    .addComponent(buttonLapangan)))
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            lapanganALayout.setVerticalGroup(
+                    lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(lapanganALayout.createSequentialGroup()
+                                    .addComponent(judulLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ukuranLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(hargaLabel)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(buttonLapangan)
+                                    .addContainerGap())
+            );
+
+            imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user/images/Lapangan_A.jpg")));
+
+            judulLabel.setFont(new java.awt.Font("Verdana", 1, 18));
+            judulLabel.setText(rs.getString("nama_lapangan"));
+
+            ukuranLabel.setFont(new java.awt.Font("Verdana", 0, 14));
+            ukuranLabel.setText("Ukuran : 30m x 15m");
+
+            hargaLabel.setFont(new java.awt.Font("Verdana", 0, 14));
+            hargaLabel.setText(String.format("Harga : Rp%d/jam", rs.getInt("harga_per_jam")));
+
+            buttonLapangan.setText("PESAN");
+            panel3HorizontalGroup.addComponent(panelLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+            panel3InnerVerticalGroup
                 .addComponent(panelLapangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lapanganB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
+        }
 
         panel3VerticalGroup.addGroup(panel3InnerVerticalGroup);
         jPanel3Layout.setHorizontalGroup(panel3HorizontalGroup);
