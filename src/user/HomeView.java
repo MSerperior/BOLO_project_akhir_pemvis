@@ -122,6 +122,12 @@ public class HomeView extends javax.swing.JFrame {
         tableRiwayatPemesanan = new javax.swing.JTable();
         PanelSetting = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        pwbaruTextField = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        konfirmpwTextField = new javax.swing.JTextField();
+        simpanButton = new javax.swing.JButton();
         PanelTransaksi = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         transaksiUserTable = new javax.swing.JTable();
@@ -818,23 +824,79 @@ public class HomeView extends javax.swing.JFrame {
 
         PanelIsi.add(PanelRiwayatPemesanan, "card4");
 
-        jLabel5.setText("Panel Setting");
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel5.setText("SETTING USER");
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel42.setText("Password Baru");
+
+        pwbaruTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwbaruTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel43.setText("Konfirmasi Password ");
+
+        simpanButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        simpanButton.setText("SIMPAN");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(simpanButton)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel42)
+                            .addComponent(jLabel43))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pwbaruTextField)
+                            .addComponent(konfirmpwTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(pwbaruTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(konfirmpwTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(simpanButton)
+                .addGap(29, 29, 29))
+        );
 
         javax.swing.GroupLayout PanelSettingLayout = new javax.swing.GroupLayout(PanelSetting);
         PanelSetting.setLayout(PanelSettingLayout);
         PanelSettingLayout.setHorizontalGroup(
             PanelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSettingLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSettingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGap(182, 182, 182))
+            .addGroup(PanelSettingLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         PanelSettingLayout.setVerticalGroup(
             PanelSettingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelSettingLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         PanelIsi.add(PanelSetting, "card5");
@@ -944,6 +1006,10 @@ public class HomeView extends javax.swing.JFrame {
         panelPilihan = 4;
         setTampilan();
     }//GEN-LAST:event_ButtonTransaksiActionPerformed
+
+    private void pwbaruTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwbaruTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwbaruTextFieldActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelRiwayatPemesanan, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, PemesananTopup, ButtonSetting, ButtonTransaksi};
@@ -1165,6 +1231,8 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1173,9 +1241,11 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField konfirmpwTextField;
     private javax.swing.JPanel lapanganA;
     private javax.swing.JPanel lapanganB;
     private javax.swing.JPanel lapanganC;
@@ -1185,7 +1255,9 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel lapanganG;
     private javax.swing.JPanel lapanganH;
     private javax.swing.JLabel namaLabel;
+    private javax.swing.JTextField pwbaruTextField;
     private javax.swing.JLabel saldoLabel;
+    private javax.swing.JButton simpanButton;
     private javax.swing.JTable tableRiwayatPemesanan;
     private javax.swing.JTable transaksiUserTable;
     // End of variables declaration//GEN-END:variables
