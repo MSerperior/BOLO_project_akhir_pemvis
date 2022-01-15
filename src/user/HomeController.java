@@ -24,7 +24,8 @@ public class HomeController {
      */
     public ResultSet getLapangan() throws SQLException{
         return dbConn.stm.executeQuery("SELECT * FROM lapangan "
-                + "INNER JOIN gambar USING (id_lapangan)");
+                + "LEFT JOIN gambar USING (id_lapangan)"
+                + "INNER JOIN jenis_lapangan USING (id_jenis_lapangan)");
     }
     /**
      * fungsi untuk mendapatkan riwayat top up harian atau bulanan
