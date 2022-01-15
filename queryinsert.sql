@@ -49,11 +49,11 @@ INSERT INTO `riwayat_top_up` (`id_riwayat`, `id_user`, `id_admin`, `jumlah`, `ta
 
 
 INSERT INTO `gambar` (`id_gambar`, `id_lapangan`, `url_gambar`) VALUES
-(1, 11, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXEbWk45KBw8Zcgk1dJQ73_2cIqMGsR9G4NzMqrkAmkDOxhnI1g8btLDtH_IGnjRrDiUk&usqp=CAU'),
-(2, 12, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs8QzMZaK4Iis4EXDTcUtTdbcqeC2RH0kNS0Fz5nfuie0xAxrs-UH2Fgpd4fff4osTah0&usqp=CAU'),
-(3, 13, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlp3vCq3yuaFTDi7izCBN-KI5p9Y2MdM3TYw&usqp=CAU'),
-(4, 14, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPClHnmde2voEr56czVQsZo_4AHtqclc0vJQ&usqp=CAU'),
-(5, 15, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtvqGXF4cntlhYNbPeGE8bca5XApnF8MdEVA&usqp=CAU'),
-(6, 16, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSurY2ScGl7rQ9e5Zc43k5gm94o6NFi-vCoAw&usqp=CAU'),
-(7, 17, 'https://ecs7.tokopedia.net/blog-tokopedia-com/uploads/2021/01/Ukuran-Lapangan-Bulu-Tangkis.jpg'),
-(8, 18, 'https://www.garudaprint.com/olahraga/wp-content/uploads/2020/08/ukuran-lapangan-badminton.png');
+(1, 11, '/user/images/Lapangan_A.jpg'),
+(2, 12, '/user/images/Lapangan_B.jpg'),
+(3, 13, '/user/images/Lapangan_C.jpg'),
+(4, 14, '/user/images/Lapangan_D.jpg'),
+(5, 15, '/user/images/Lapangan_E.jpg'),
+(6, 16, '/user/images/Lapangan_F.jpg'),
+(7, 17, '/user/images/Lapangan_G.jpg'),
+(8, 18, '/user/images/Lapangan_H.png');
