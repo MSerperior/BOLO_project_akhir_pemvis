@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javax.swing.JButton;
 import javax.swing.*;
 import javax.swing.JPanel;
+import models.User;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -27,13 +28,16 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class HomeView extends javax.swing.JFrame {
 
     HomeController homeController = new HomeController();
-
+    User user;
     /**
      * Creates new form HomeView
+     * @param user logged in user
      */
-    public HomeView() {
+    public HomeView(User user) {
+        this.user = user;
         initComponents();
         setKomponen();
+        fillUserData();
         setTampilan();
     }
 
@@ -683,11 +687,11 @@ public class HomeView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeView().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new HomeView().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -739,4 +743,11 @@ public class HomeView extends javax.swing.JFrame {
     Color[] arrColor;
 
     int panelPilihan;
+
+    private void fillUserData() {
+        id_UserLabel.setText(String.valueOf(user.getId_user()));
+        namaLabel.setText(user.getNama());
+        emailLabel.setText(user.getEmail());
+        saldoLabel.setText(String.valueOf(user.getSaldo()));
+    }
 }

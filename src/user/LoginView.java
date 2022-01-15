@@ -347,6 +347,13 @@ public class LoginView extends javax.swing.JFrame {
         
         user.save();
         
+        if (user.login()) {
+            this.dispose();
+            new HomeView(user).setVisible(true);
+        }
+        else{
+            System.out.println("invalid login");
+        }
         panelPilihan = 0;
         setTampilan();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -361,7 +368,7 @@ public class LoginView extends javax.swing.JFrame {
 
         if (user.login()) {
             this.dispose();
-            new HomeView().setVisible(true);
+            new HomeView(user).setVisible(true);
         }
         else{
             System.out.println("invalid login");
