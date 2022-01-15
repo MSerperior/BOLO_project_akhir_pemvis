@@ -22,16 +22,9 @@ public class HomeController {
      * @param r, 1=harian, 2=bulanan
      * @return resultset dari query, null jika kondisi salah
      */
-    public ResultSet getRental(int r) throws SQLException{
-        if(r == 1){
-            return dbConn.stm.executeQuery("SELECT *,total_pembayaran pendapatan FROM rental ORDER BY waktu_pemesanan DESC LIMIT 14");
-        }
-        else if(r==2){
-            return dbConn.stm.executeQuery("SELECT YEAR(waktu_pemesanan) tahun,MONTH(waktu_pemesanan) bulan,SUM(total_pembayaran) pendapatan FROM rental GROUP BY 1,2 ORDER BY waktu_pemesanan DESC LIMIT 12");
-        }
-        else{
-            return null;
-        }
+    public ResultSet getLapangan() throws SQLException{
+        return dbConn.stm.executeQuery("SELECT * FROM lapangan "
+                + "INNER JOIN gambar USING (id_lapangan)");
     }
     /**
      * fungsi untuk mendapatkan riwayat top up harian atau bulanan
