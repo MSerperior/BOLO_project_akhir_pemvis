@@ -54,4 +54,9 @@ public class HomeController {
     public ResultSet indexJenisLapangan() throws SQLException{
         return dbConn.stm.executeQuery("SELECT * FROM jenis_lapangan");
     }
+    
+    public void topUp(String user_id, int nominal) throws SQLException{
+        dbConn.stm.execute(String.format("UPDATE user SET saldo=saldo+%d WHERE id_user=%s",nominal,user_id));
+    }
+    
 }

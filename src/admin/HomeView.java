@@ -97,8 +97,8 @@ public class HomeView extends javax.swing.JFrame {
         PanelToupUp = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        id_userTF = new javax.swing.JTextField();
+        cekIdButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -344,57 +344,83 @@ public class HomeView extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel3.setText("id_User");
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        id_userTF.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jButton1.setText("Cek id_User");
+        cekIdButton.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        cekIdButton.setText("Cek id_User");
+        cekIdButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekIdButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setText("Pilih Nominal TopUp");
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton2.setText("20.000");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton3.setText("50.000");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton4.setText("100.000");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton5.setText("200.000");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton6.setText("300.000");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton7.setText("400.000");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jButton8.setText("500.000");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelToupUpLayout = new javax.swing.GroupLayout(PanelToupUp);
         PanelToupUp.setLayout(PanelToupUpLayout);
         PanelToupUpLayout.setHorizontalGroup(
             PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelToupUpLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(197, 197, 197))
-            .addGroup(PanelToupUpLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(34, 34, 34))
             .addGroup(PanelToupUpLayout.createSequentialGroup()
                 .addGroup(PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
+                        .addComponent(cekIdButton)
                         .addGroup(PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelToupUpLayout.createSequentialGroup()
                                 .addGap(236, 236, 236)
@@ -403,15 +429,27 @@ public class HomeView extends javax.swing.JFrame {
                                 .addGap(167, 167, 167)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(id_userTF, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelToupUpLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jButton6)
                         .addGap(38, 38, 38)
                         .addComponent(jButton7)
                         .addGap(38, 38, 38)
-                        .addComponent(jButton8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton8))
+                    .addGroup(PanelToupUpLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton4)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton5))
+                    .addGroup(PanelToupUpLayout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jLabel4)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         PanelToupUpLayout.setVerticalGroup(
             PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,12 +459,12 @@ public class HomeView extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_userTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(57, 57, 57)
+                .addComponent(cekIdButton)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel4)
-                .addGap(47, 47, 47)
+                .addGap(49, 49, 49)
                 .addGroup(PanelToupUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -713,6 +751,117 @@ public class HomeView extends javax.swing.JFrame {
             Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_deleteLapanganButtonActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 200000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void cekIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekIdButtonActionPerformed
+        // TODO add your handling code here:
+        int id_user;
+        try {
+            id_user = Integer.parseInt(id_userTF.getText());   
+            User user = new User(id_user); 
+            if(user.exist()){
+                JOptionPane.showMessageDialog(this, String.format("Nama : %s\n"
+                        + "Saldo : %d", user.getNama(), user.getSaldo()));
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "User tidak ditemukan");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Input berupa angka");
+        }
+       
+        
+    }//GEN-LAST:event_cekIdButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 20000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 50000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 100000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 300000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 400000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        int nominal = 500000;
+        int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
+        if(option == JOptionPane.YES_OPTION){
+            try {
+                homeController.topUp(id_userTF.getText(),nominal);
+            } catch (SQLException ex) {
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelToupUp, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, ButtonTopup, ButtonSetting, ButtonTransaksi};
@@ -864,9 +1013,10 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelSetting;
     private javax.swing.JPanel PanelToupUp;
     private javax.swing.JPanel PanelTransaksi;
+    private javax.swing.JButton cekIdButton;
     private javax.swing.JButton deleteLapanganButton;
     private javax.swing.JButton editLapanganButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField id_userTF;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -884,7 +1034,6 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable lapanganTable;
     private java.awt.Choice rentangChoice;
     private javax.swing.JButton tambahJenisLapangan;

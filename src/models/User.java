@@ -151,10 +151,15 @@ public class User extends Model implements Authenticable {
     @Override
     public boolean exist() {
         try {
-            return this.dbConn.stm.executeQuery(this.selectPrefix
-                    + String.format("WHERE email='%s' AND password='%s'",
-                            this.email,
-                            this.password)).next();
+            ResultSet rs = this.dbConn.stm.executeQuery(this.selectPrefix
+                    + String.format("WHERE id_user=%d",
+                            this.id_user));
+            if(rs.next()){
+                this.nama = rs.getString("nama");
+                this.saldo = rs.getInt("saldo");
+                return true;
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }

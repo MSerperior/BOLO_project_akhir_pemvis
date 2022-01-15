@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -131,10 +132,18 @@ public class Admin extends Model implements Authenticable {
     @Override
     public boolean login() {
         try {
-            return this.dbConn.stm.executeQuery(this.selectPrefix
+            ResultSet rs = this.dbConn.stm.executeQuery(this.selectPrefix
                     + String.format("WHERE email='%s' AND password='%s'",
                             this.email,
-                            this.password)).next();
+                            this.password));
+            if(rs.next()){
+                this.id_admin = rs.getInt("id_admin");
+                return true;
+            }
+            else{
+                return false;
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
