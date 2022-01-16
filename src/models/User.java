@@ -175,6 +175,7 @@ public class User extends Model implements Authenticable {
                             this.password));
             if(rs.next()){
                 this.id_user = rs.getInt("id_user");
+                this.nama = rs.getString("nama");
                 this.saldo = rs.getInt("saldo");
                 return true;
             }

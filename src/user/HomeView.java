@@ -5,15 +5,24 @@
  */
 package user;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
 import javax.swing.JButton;
 import javax.swing.*;
 import javax.swing.JPanel;
+import models.Lapangan;
 import models.User;
 
 import org.jfree.chart.ChartFactory;
@@ -29,11 +38,14 @@ public class HomeView extends javax.swing.JFrame {
 
     HomeController homeController = new HomeController();
     User user;
+
     /**
      * Creates new form HomeView
+     *
      * @param user logged in user
      */
     public HomeView(User user) {
+        this.listHargaLapangan = new ArrayList<Integer>();
         this.user = user;
         initComponents();
         setKomponen();
@@ -565,9 +577,10 @@ public class HomeView extends javax.swing.JFrame {
 
     private void getListLapangan() throws SQLException {
         jPanel3.removeAll();
+        listHargaLapangan.clear();
         JLabel imageLabel = new JLabel();
         JLabel judulLabel = new JLabel();
-        JLabel ukuranLabel = new JLabel();
+        JLabel jenisLabel = new JLabel();
         JLabel hargaLabel = new JLabel();
         JButton buttonLapangan = new JButton();
         JPanel panelLapangan = new JPanel();
@@ -585,11 +598,11 @@ public class HomeView extends javax.swing.JFrame {
         while (rs.next()) {
             imageLabel = new JLabel();
             judulLabel = new JLabel();
-            ukuranLabel = new JLabel();
+            jenisLabel = new JLabel();
             hargaLabel = new JLabel();
             buttonLapangan = new JButton();
             panelLapangan = new JPanel();
-            
+
             panelLapangan.setBackground(Color.WHITE);
             javax.swing.GroupLayout lapanganALayout = new javax.swing.GroupLayout(panelLapangan);
             panelLapangan.setLayout(lapanganALayout);
@@ -605,13 +618,13 @@ public class HomeView extends javax.swing.JFrame {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                     .addGroup(lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(hargaLabel)
-                                                            .addComponent(ukuranLabel)))
+                                                            .addComponent(jenisLabel)))
                                             .addGroup(lapanganALayout.createSequentialGroup()
                                                     .addGap(112, 112, 112)
                                                     .addComponent(buttonLapangan)))
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
-            
+
             lapanganALayout.setVerticalGroup(
                     lapanganALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(lapanganALayout.createSequentialGroup()
@@ -620,7 +633,7 @@ public class HomeView extends javax.swing.JFrame {
                             .addGroup(lapanganALayout.createSequentialGroup()
                                     .addComponent(judulLabel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ukuranLabel)
+                                    .addComponent(jenisLabel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(hargaLabel)
                                     .addGap(33, 33, 33)
@@ -633,22 +646,53 @@ public class HomeView extends javax.swing.JFrame {
             } catch (Exception e) {
                 ii = new ImageIcon(getClass().getResource("/user/images/placeholder.png"));
             }
-            
+
             imageLabel.setIcon(ii);
             judulLabel.setFont(new java.awt.Font("Verdana", 1, 18));
             judulLabel.setText(rs.getString("nama_lapangan"));
 
-            ukuranLabel.setFont(new java.awt.Font("Verdana", 0, 14));
-            ukuranLabel.setText("Jenis Lapangan : " + rs.getString("jenis_lapangan"));
+            jenisLabel.setFont(new java.awt.Font("Verdana", 0, 14));
+            jenisLabel.setText("Jenis Lapangan : " + rs.getString("jenis_lapangan"));
 
             hargaLabel.setFont(new java.awt.Font("Verdana", 0, 14));
             hargaLabel.setText(String.format("Harga : Rp%d/jam", rs.getInt("harga_per_jam")));
-
+            listHargaLapangan.add(rs.getInt("harga_per_jam"));
+            int id_lapangan = rs.getInt("id_lapangan");
             buttonLapangan.setText("PESAN");
+            buttonLapangan.addActionListener(new java.awt.event.ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    int[] id = {id_lapangan};
+                    JDateChooser jDateChooser = new JDateChooser();
+                    JSpinner jamMulaiSpinner = new JSpinner();
+                    JSpinner durasiSpinner = new JSpinner();
+                    Object[] message = {
+                        "Tanggal Mulai :", jDateChooser,
+                        "Jam Mulai : ", jamMulaiSpinner,
+                        "Durasi : ", durasiSpinner
+                    };
+                    int option = JOptionPane.showConfirmDialog(null, message, "Edit Lapangan", JOptionPane.OK_CANCEL_OPTION);
+                    if (option == JOptionPane.OK_OPTION) {
+                        Date myDateObj = jDateChooser.getDate();
+                        SimpleDateFormat dmyFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String waktu_mulai = dmyFormat.format(myDateObj);
+                        String jam_mulai = String.format(" %d:00:00", (int) jamMulaiSpinner.getValue());
+                        System.out.println();
+                        try {
+                            homeController.pesanLapangan(user.getId_user(), id[0], (int)durasiSpinner.getValue(), waktu_mulai + jam_mulai);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        System.out.println("Login canceled");
+                    }
+//                    
+                }
+            });
             panel3HorizontalGroup.addComponent(panelLapangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
             panel3InnerVerticalGroup
-                .addComponent(panelLapangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
+                    .addComponent(panelLapangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
         }
 
         panel3VerticalGroup.addGroup(panel3InnerVerticalGroup);
@@ -687,11 +731,11 @@ public class HomeView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new HomeView().setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new HomeView(new User(118)).setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -741,7 +785,7 @@ public class HomeView extends javax.swing.JFrame {
     JPanel[] arrPanel;
     JButton[] arrButton;
     Color[] arrColor;
-
+    ArrayList<Integer> listHargaLapangan;
     int panelPilihan;
 
     private void fillUserData() {

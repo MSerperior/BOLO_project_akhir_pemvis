@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,11 @@ public class Lapangan extends Model{
         this.id_jenis_lapangan = id_jenis_lapangan;
         this.nama_lapangan = nama_lapangan;
         this.harga_per_jam = harga_per_jam;
+    }
+
+    public Lapangan(int id_lapangan) {
+        super("lapangan");
+        this.id_lapangan = id_lapangan;
     }
 
     
@@ -134,9 +140,17 @@ public class Lapangan extends Model{
     @Override
     public boolean exist() {
         try {
-            return this.dbConn.stm.executeQuery(this.selectPrefix
+            ResultSet rs = this.dbConn.stm.executeQuery(this.selectPrefix
                     + String.format("WHERE id_lapangan=%d",
-                            this.id_lapangan)).next();
+                            this.id_lapangan));
+            if(rs.next()){
+                this.harga_per_jam = rs.getInt("harga_per_jam");
+                this.nama_lapangan = rs.getString("nama_lapangan");
+                return true;
+            }
+            else{
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
