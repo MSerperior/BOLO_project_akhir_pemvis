@@ -11,6 +11,11 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/HomeController.java</file>
+            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/HomeView.java</file>
+            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/admin/LoginView.java</file>
+            <file>file:/C:/Users/62821/Documents/NetBeansProjects/BOLO_project_akhir_pemvis/src/user/HomeView.java</file>
+        </group>
     </open-files>
 </project-private>

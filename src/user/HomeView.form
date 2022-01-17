@@ -574,9 +574,6 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="jPFBaru">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPFBaruActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="jPFKonfirmasi">
                     </Component>

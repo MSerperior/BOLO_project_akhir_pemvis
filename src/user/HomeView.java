@@ -22,6 +22,8 @@ import javafx.scene.Parent;
 import javax.swing.JButton;
 import javax.swing.*;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import models.Lapangan;
 import models.User;
 
@@ -38,7 +40,9 @@ public class HomeView extends javax.swing.JFrame {
 
     HomeController homeController = new HomeController();
     User user;
-
+    Object dataTopUp[][] = new Object[100][3];
+    String kolomTopUp[] = {"Id Top Up", "Jumlah", "Tanggal Top Up"};
+    TableModel topUpTM = new DefaultTableModel(dataTopUp,kolomTopUp);
     /**
      * Creates new form HomeView
      *
@@ -373,12 +377,6 @@ public class HomeView extends javax.swing.JFrame {
             }
         });
 
-        jPFBaru.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPFBaruActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -545,6 +543,11 @@ public class HomeView extends javax.swing.JFrame {
     private void ButtonTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTransaksiActionPerformed
         // TODO add your handling code here:
         panelPilihan = 4;
+        try {
+            updateRiwayatTopUpTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setTampilan();
     }//GEN-LAST:event_ButtonTransaksiActionPerformed
 
@@ -564,10 +567,6 @@ public class HomeView extends javax.swing.JFrame {
             Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_simpanButtonActionPerformed
-
-    private void jPFBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPFBaruActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPFBaruActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelRiwayatPemesanan, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, PemesananTopup, ButtonSetting, ButtonTransaksi};
@@ -716,7 +715,22 @@ public class HomeView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel3);
 
     }
-
+    
+    private void updateRiwayatTopUpTable() throws SQLException {
+        int i = 0;
+        ResultSet rs = homeController.getRiwayatTopUp(user.getId_user());
+        while (rs.next()) {
+            topUpTM.setValueAt(rs.getInt("id_riwayat"), i, 0);
+            topUpTM.setValueAt(rs.getInt("jumlah"), i, 1);
+            topUpTM.setValueAt(rs.getString("tanggal_top_up"), i, 2);
+            i++;
+        }
+        topUpTM.setValueAt(null, i, 0);
+        topUpTM.setValueAt(null, i, 1);
+        topUpTM.setValueAt(null, i, 2);
+        
+        transaksiUserTable.setModel(topUpTM);
+    }
     /**
      * @param args the command line arguments
      */

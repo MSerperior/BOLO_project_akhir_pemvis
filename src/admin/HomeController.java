@@ -55,9 +55,9 @@ public class HomeController {
         return dbConn.stm.executeQuery("SELECT * FROM jenis_lapangan");
     }
     
-    public void topUp(String id_user, int nominal) throws SQLException{
+    public void topUp(int id_user, int id_admin, int nominal) throws SQLException{
         dbConn.stm.execute(String.format("UPDATE user SET saldo=saldo+%d WHERE id_user=%s",nominal,id_user));
-        dbConn.stm.execute(String.format("INSERT INTO riwayat_top_up(id_user, id_admin, jumlah, tanggal_top_up) VALUES(%d, $d, %d, NOW())", id_user, 1002, nominal));
+        dbConn.stm.execute(String.format("INSERT INTO riwayat_top_up(id_user, id_admin, jumlah, tanggal_top_up) VALUES(%d, %d, %d, NOW())", id_user, id_admin, nominal));
     }
     
 }

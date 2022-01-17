@@ -758,7 +758,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -791,7 +791,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -804,7 +804,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -817,7 +817,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -830,7 +830,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -843,7 +843,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -856,7 +856,7 @@ public class HomeView extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, String.format("Yakin melakukan top up ke id %s dengan nominal Rp%d?", id_userTF.getText(), nominal));
         if(option == JOptionPane.YES_OPTION){
             try {
-                homeController.topUp(id_userTF.getText(),nominal);
+                homeController.topUp(Integer.parseInt(id_userTF.getText()), admin.getId_admin() , nominal);
             } catch (SQLException ex) {
                 Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
