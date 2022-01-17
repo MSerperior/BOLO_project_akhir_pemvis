@@ -45,7 +45,6 @@ public class HomeView extends javax.swing.JFrame {
      * @param user logged in user
      */
     public HomeView(User user) {
-        this.listHargaLapangan = new ArrayList<Integer>();
         this.user = user;
         initComponents();
         setKomponen();
@@ -577,7 +576,6 @@ public class HomeView extends javax.swing.JFrame {
 
     private void getListLapangan() throws SQLException {
         jPanel3.removeAll();
-        listHargaLapangan.clear();
         JLabel imageLabel = new JLabel();
         JLabel judulLabel = new JLabel();
         JLabel jenisLabel = new JLabel();
@@ -656,7 +654,6 @@ public class HomeView extends javax.swing.JFrame {
 
             hargaLabel.setFont(new java.awt.Font("Verdana", 0, 14));
             hargaLabel.setText(String.format("Harga : Rp%d/jam", rs.getInt("harga_per_jam")));
-            listHargaLapangan.add(rs.getInt("harga_per_jam"));
             int id_lapangan = rs.getInt("id_lapangan");
             buttonLapangan.setText("PESAN");
             buttonLapangan.addActionListener(new java.awt.event.ActionListener() {
@@ -785,7 +782,6 @@ public class HomeView extends javax.swing.JFrame {
     JPanel[] arrPanel;
     JButton[] arrButton;
     Color[] arrColor;
-    ArrayList<Integer> listHargaLapangan;
     int panelPilihan;
 
     private void fillUserData() {
