@@ -171,7 +171,7 @@ public class LoginView extends javax.swing.JFrame {
         if (admin.login()) {
             this.dispose();
             try {
-                new HomeView().setVisible(true);
+                new HomeView(admin).setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -38,17 +38,17 @@ public class HomeView extends javax.swing.JFrame {
     HomeController homeController = new HomeController();
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     TableModel lapanganTM = new DefaultTableModel(data,kolom);
-
+    Admin admin;
     /**
      * Creates new form HomeView
      *
      * @throws java.sql.SQLException
      */
-    public HomeView() throws SQLException {
+    public HomeView(Admin admin) throws SQLException {
 //        // Create dataset  
 //         dataset = createDataset(1);
         // Create chart  
-
+        this.admin = admin;
         createDataset(0);
         JFreeChart chart = ChartFactory.createLineChart(
                 "Pendapatan", // Chart title  
@@ -57,7 +57,7 @@ public class HomeView extends javax.swing.JFrame {
                 dataset
         );
         ChartPanel panel = new ChartPanel(chart);
-        panel.setSize(800, 400);
+        panel.setSize(1600, 800);
         initComponents();
         PanelDashboard.add(panel);
         setKomponen();
@@ -990,7 +990,7 @@ public class HomeView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new HomeView().setVisible(true);
+                    new HomeView(new Admin(1002)).setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
                 }
