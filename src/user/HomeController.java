@@ -63,4 +63,14 @@ public class HomeController {
         dbConn.stm.execute(String.format("UPDATE user SET saldo=saldo-%d WHERE id_user=%d",total_pembayaran,id_user));
     }
 
+    public boolean ubahPassword(String password, String konfirmasi, int id_user) throws SQLException {
+        if(password.equals(konfirmasi)){
+            dbConn.stm.execute(String.format("UPDATE user SET password='%s' WHERE id_user=%d", password, id_user));
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

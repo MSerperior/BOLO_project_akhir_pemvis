@@ -6,6 +6,8 @@
 package user;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import models.*;
@@ -69,7 +71,7 @@ public class LoginView extends javax.swing.JFrame {
         TextFieldemail = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         aButtonLogin = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        invalidLoginLabel = new javax.swing.JLabel();
         registerPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -135,9 +137,9 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel9.setFont(new java.awt.Font("Verdana", 2, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        invalidLoginLabel.setBackground(new java.awt.Color(204, 204, 255));
+        invalidLoginLabel.setFont(new java.awt.Font("Verdana", 2, 11)); // NOI18N
+        invalidLoginLabel.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -159,7 +161,7 @@ public class LoginView extends javax.swing.JFrame {
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TextFieldemail, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(jPasswordField)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(invalidLoginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -176,7 +178,7 @@ public class LoginView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(invalidLoginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(aButtonLogin)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -371,7 +373,7 @@ public class LoginView extends javax.swing.JFrame {
             new HomeView(user).setVisible(true);
         }
         else{
-            System.out.println("invalid login");
+            invalidLoginLabel.setText("invalid login");
         }
     }//GEN-LAST:event_aButtonLoginActionPerformed
   
@@ -415,6 +417,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JButton aButtonLogin;
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonRegister;
+    private javax.swing.JLabel invalidLoginLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -424,7 +427,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JSeparator jSeparator1;
