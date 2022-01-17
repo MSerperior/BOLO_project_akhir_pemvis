@@ -14,17 +14,19 @@ import java.util.logging.Logger;
  *
  * @author 62821
  */
-public class Lapangan extends Model{
+public class Lapangan extends Model {
 
-    public Lapangan(){
+    public Lapangan() {
         super("lapangan");
     }
+
     public Lapangan(int id_jenis_lapangan, String nama_lapangan, int harga_per_jam) {
         super("lapangan");
         this.id_jenis_lapangan = id_jenis_lapangan;
         this.nama_lapangan = nama_lapangan;
         this.harga_per_jam = harga_per_jam;
     }
+
     public Lapangan(int id_lapangan, int id_jenis_lapangan, String nama_lapangan, int harga_per_jam) {
         super("lapangan");
         this.id_lapangan = id_lapangan;
@@ -38,7 +40,6 @@ public class Lapangan extends Model{
         this.id_lapangan = id_lapangan;
     }
 
-    
     /**
      * @return the id_lapangan
      */
@@ -113,14 +114,11 @@ public class Lapangan extends Model{
     }
 
     @Override
-    public void delete() {
-        try {
-            this.dbConn.stm.execute(this.deletePrefix
-                    + String.format("WHERE id_lapangan=%d",
-                            this.id_lapangan));
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void delete() throws SQLException {
+        this.dbConn.stm.execute(this.deletePrefix
+                + String.format("WHERE id_lapangan=%d",
+                        this.id_lapangan));
+
     }
 
     @Override
@@ -143,12 +141,11 @@ public class Lapangan extends Model{
             ResultSet rs = this.dbConn.stm.executeQuery(this.selectPrefix
                     + String.format("WHERE id_lapangan=%d",
                             this.id_lapangan));
-            if(rs.next()){
+            if (rs.next()) {
                 this.harga_per_jam = rs.getInt("harga_per_jam");
                 this.nama_lapangan = rs.getString("nama_lapangan");
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         } catch (SQLException ex) {

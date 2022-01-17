@@ -33,11 +33,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class HomeView extends javax.swing.JFrame {
 
-    Object data[][] = new Object[100][4];
-    String kolom[] = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
+    Object[][] dataLapangan = new Object[100][4];
+    String[] kolomLapangan = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
     HomeController homeController = new HomeController();
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    TableModel lapanganTM = new DefaultTableModel(data,kolom);
+    TableModel lapanganTM = new DefaultTableModel(dataLapangan,kolomLapangan);
     Admin admin;
     /**
      * Creates new form HomeView
@@ -613,6 +613,8 @@ public class HomeView extends javax.swing.JFrame {
 
     private void ButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLogoutActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new LoginView().setVisible(true);
     }//GEN-LAST:event_ButtonLogoutActionPerformed
 
     private void tambahJenisLapanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahJenisLapanganActionPerformed
@@ -741,7 +743,11 @@ public class HomeView extends javax.swing.JFrame {
         lapangan.setId_lapangan((int) lapanganTM.getValueAt(i, 0));
         int option = JOptionPane.showConfirmDialog(null, "Yakin hapus lapangan?", "Hapus Lapangan", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            lapangan.delete();
+            try {
+                lapangan.delete();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Lapangan yang sudah pernah dipesan tidak dapat dihapus");
+            }
         } else {
             System.out.println("Delete canceled");
         }

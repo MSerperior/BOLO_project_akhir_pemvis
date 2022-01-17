@@ -21,30 +21,18 @@ public class HomeController {
 
     DBConnector dbConn = new DBConnector();
 
-    /**
-     * fungsi untuk mendapatkan pendapatan harian atau bulanan
-     *
-     * @param r, 1=harian, 2=bulanan
-     * @return resultset dari query, null jika kondisi salah
-     */
     public ResultSet getLapangan() throws SQLException {
         return dbConn.stm.executeQuery("SELECT * FROM lapangan "
                 + "LEFT JOIN gambar USING (id_lapangan)"
                 + "INNER JOIN jenis_lapangan USING (id_jenis_lapangan)");
     }
 
-    /**
-     * fungsi untuk mendapatkan riwayat top up harian atau bulanan
-     *
-     * @param r, 1=harian, 2=bulanan
-     * @return resultset dari query, null jika kondisi salah
-     */
     public ResultSet getRiwayatTopUp(int id_user) throws SQLException {
-        return dbConn.stm.executeQuery("SELECT * FROM riwayat_top_up WHERE id_user="+id_user);
+        return dbConn.stm.executeQuery("SELECT * FROM riwayat_top_up WHERE id_user="+id_user+" ORDER BY tanggal_top_up DESC");
     }
 
     public ResultSet getRiwayatPesan(int id_user) throws SQLException {
-        return dbConn.stm.executeQuery("SELECT * FROM rental WHERE id_user="+id_user);
+        return dbConn.stm.executeQuery("SELECT * FROM rental WHERE id_user="+id_user+" ORDER BY waktu_pemesanan DESC");
     }
 
     public void pesanLapangan(int id_user, int id_lapangan, int durasi, String waktu_mulai) throws SQLException {

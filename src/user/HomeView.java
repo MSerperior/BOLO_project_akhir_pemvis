@@ -43,6 +43,10 @@ public class HomeView extends javax.swing.JFrame {
     Object dataTopUp[][] = new Object[100][3];
     String kolomTopUp[] = {"Id Top Up", "Jumlah", "Tanggal Top Up"};
     TableModel topUpTM = new DefaultTableModel(dataTopUp,kolomTopUp);
+    
+    Object dataPesan[][] = new Object[100][5];
+    String kolomPesan[] = {"Id Transaksi", "Id Lapangan", "Durasi(jam)", "Waktu Pesan", "Waktu Mulai"};
+    TableModel pesanTM = new DefaultTableModel(dataPesan,kolomPesan);
     /**
      * Creates new form HomeView
      *
@@ -175,6 +179,11 @@ public class HomeView extends javax.swing.JFrame {
         });
 
         ButtonLogout.setText("LogOut");
+        ButtonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
@@ -514,6 +523,7 @@ public class HomeView extends javax.swing.JFrame {
     private void ButtonDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDashboardActionPerformed
         // TODO add your handling code here:
         panelPilihan = 0;
+        updateProfile();
         setTampilan();
     }//GEN-LAST:event_ButtonDashboardActionPerformed
 
@@ -531,6 +541,11 @@ public class HomeView extends javax.swing.JFrame {
     private void PemesananTopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PemesananTopupActionPerformed
         // TODO add your handling code here:
         panelPilihan = 2;
+        try {
+            updateRiwayatPesan();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setTampilan();
     }//GEN-LAST:event_PemesananTopupActionPerformed
 
@@ -567,6 +582,12 @@ public class HomeView extends javax.swing.JFrame {
             Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_simpanButtonActionPerformed
+
+    private void ButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLogoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new LoginView().setVisible(true);
+    }//GEN-LAST:event_ButtonLogoutActionPerformed
     private void setKomponen() {
         arrPanel = new JPanel[]{PanelDashboard, PanelLapangan, PanelRiwayatPemesanan, PanelSetting, PanelTransaksi};
         arrButton = new JButton[]{ButtonDashboard, ButtonLapangan, PemesananTopup, ButtonSetting, ButtonTransaksi};
@@ -730,6 +751,26 @@ public class HomeView extends javax.swing.JFrame {
         topUpTM.setValueAt(null, i, 2);
         
         transaksiUserTable.setModel(topUpTM);
+    }
+    
+    private void updateRiwayatPesan() throws SQLException {
+        int i = 0;
+        ResultSet rs = homeController.getRiwayatPesan(user.getId_user());
+        while (rs.next()) {
+            pesanTM.setValueAt(rs.getInt("id_rental"), i, 0);
+            pesanTM.setValueAt(rs.getInt("id_lapangan"), i, 1);
+            pesanTM.setValueAt(rs.getString("durasi"), i, 2);
+            pesanTM.setValueAt(rs.getString("waktu_pemesanan"), i, 3);
+            pesanTM.setValueAt(rs.getString("waktu_mulai"), i, 4);
+            i++;
+        }
+        
+        tableRiwayatPemesanan.setModel(pesanTM);
+    }
+    
+    private void updateProfile(){
+        user.login();
+        saldoLabel.setText(String.valueOf(user.getSaldo()));
     }
     /**
      * @param args the command line arguments

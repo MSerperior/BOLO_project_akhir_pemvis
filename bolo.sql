@@ -65,4 +65,4 @@ ALTER TABLE lapangan
 ADD FOREIGN KEY (id_jenis_lapangan) REFERENCES jenis_lapangan(id_jenis_lapangan);
 
 ALTER TABLE gambar
-ADD FOREIGN KEY (id_lapangan) REFERENCES lapangan(id_lapangan);
+ADD FOREIGN KEY (id_lapangan) REFERENCES lapangan(id_lapangan) ON DELETE CASCADE;

@@ -6,6 +6,7 @@
 package models;
 
 import db.DBConnector;
+import java.sql.SQLException;
 
 /**
  *
@@ -27,7 +28,7 @@ abstract class Model {
         this.selectPrefix = "SELECT * FROM " + this.table + " ";
     }
     public abstract void save();
-    public abstract void delete();
+    public abstract void delete() throws SQLException;
     public abstract void update();
     public abstract boolean exist();
 }
