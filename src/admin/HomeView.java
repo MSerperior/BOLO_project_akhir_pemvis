@@ -35,9 +35,13 @@ public class HomeView extends javax.swing.JFrame {
 
     Object[][] dataLapangan = new Object[100][4];
     String[] kolomLapangan = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
+    Object[][] dataTransaksi = new Object[100][5];
+    String[] kolomTransaksi = {"ID Top Up", "ID User", "ID Admin", "jumlah", "Tanggal Top Up"};
     HomeController homeController = new HomeController();
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    
     TableModel lapanganTM = new DefaultTableModel(dataLapangan,kolomLapangan);
+    TableModel transaksiTM = new DefaultTableModel(dataTransaksi,kolomTransaksi);
     Admin admin;
     /**
      * Creates new form HomeView
@@ -608,6 +612,11 @@ public class HomeView extends javax.swing.JFrame {
     private void ButtonTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTransaksiActionPerformed
         // TODO add your handling code here:
         panelPilihan = 4;
+        try {
+            updateTransaksiTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setTampilan();
     }//GEN-LAST:event_ButtonTransaksiActionPerformed
 
@@ -964,7 +973,21 @@ public class HomeView extends javax.swing.JFrame {
 //        lapanganTM.TableModel tm = new javax.swing.table.DefaultTableModel(data, kolom);
         lapanganTable.setModel(lapanganTM);
     }
-
+    
+    private void updateTransaksiTable() throws SQLException {
+        int i = 0;
+        ResultSet rs = homeController.getSemuaRiwayatTopUp();
+        while (rs.next()) {
+            transaksiTM.setValueAt(rs.getInt("id_riwayat"), i, 0);
+            transaksiTM.setValueAt(rs.getString("id_user"), i, 1);
+            transaksiTM.setValueAt(rs.getString("id_admin"), i, 2);
+            transaksiTM.setValueAt(rs.getInt("jumlah"), i, 3);
+            transaksiTM.setValueAt(rs.getString("tanggal_top_up"), i, 4);
+            i++;
+        }
+//        lapanganTM.TableModel tm = new javax.swing.table.DefaultTableModel(data, kolom);
+        transaksiadminTable.setModel(transaksiTM);
+    }
     /**
      * @param args the command line arguments
      */
