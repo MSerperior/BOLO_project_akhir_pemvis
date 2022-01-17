@@ -53,11 +53,11 @@ public class HomeView extends javax.swing.JFrame {
         JFreeChart chart = ChartFactory.createLineChart(
                 "Pendapatan", // Chart title  
                 "Date", // X-Axis Label  
-                "Number of Visitor", // Y-Axis Label  
+                "Pemasukan", // Y-Axis Label  
                 dataset
         );
         ChartPanel panel = new ChartPanel(chart);
-        panel.setSize(1600, 800);
+        panel.setSize(800, 350);
         initComponents();
         PanelDashboard.add(panel);
         setKomponen();
