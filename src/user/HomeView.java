@@ -746,9 +746,6 @@ public class HomeView extends javax.swing.JFrame {
             topUpTM.setValueAt(rs.getString("tanggal_top_up"), i, 2);
             i++;
         }
-        topUpTM.setValueAt(null, i, 0);
-        topUpTM.setValueAt(null, i, 1);
-        topUpTM.setValueAt(null, i, 2);
         
         transaksiUserTable.setModel(topUpTM);
     }

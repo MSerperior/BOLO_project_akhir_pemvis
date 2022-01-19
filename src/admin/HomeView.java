@@ -36,7 +36,7 @@ public class HomeView extends javax.swing.JFrame {
     Object[][] dataLapangan = new Object[100][4];
     String[] kolomLapangan = {"ID Lapangan", "Nama Lapangan", "Jenis Lapangan", "Harga per Jam"};
     Object[][] dataTransaksi = new Object[100][5];
-    String[] kolomTransaksi = {"ID Top Up", "ID User", "ID Admin", "jumlah", "Tanggal Top Up"};
+    String[] kolomTransaksi = {"ID Rental", "ID User", "ID Lapangan", "Durasi (jam)", "Waktu Mulai"};
     HomeController homeController = new HomeController();
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     
@@ -976,13 +976,13 @@ public class HomeView extends javax.swing.JFrame {
     
     private void updateTransaksiTable() throws SQLException {
         int i = 0;
-        ResultSet rs = homeController.getSemuaRiwayatTopUp();
+        ResultSet rs = homeController.getRiwayatTransaksi();
         while (rs.next()) {
-            transaksiTM.setValueAt(rs.getInt("id_riwayat"), i, 0);
+            transaksiTM.setValueAt(rs.getInt("id_rental"), i, 0);
             transaksiTM.setValueAt(rs.getString("id_user"), i, 1);
-            transaksiTM.setValueAt(rs.getString("id_admin"), i, 2);
-            transaksiTM.setValueAt(rs.getInt("jumlah"), i, 3);
-            transaksiTM.setValueAt(rs.getString("tanggal_top_up"), i, 4);
+            transaksiTM.setValueAt(rs.getString("id_lapangan"), i, 2);
+            transaksiTM.setValueAt(rs.getInt("durasi"), i, 3);
+            transaksiTM.setValueAt(rs.getString("waktu_mulai"), i, 4);
             i++;
         }
 //        lapanganTM.TableModel tm = new javax.swing.table.DefaultTableModel(data, kolom);

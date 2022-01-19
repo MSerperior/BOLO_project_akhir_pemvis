@@ -51,8 +51,11 @@ public class HomeController {
         }
     }
 
-    public ResultSet getSemuaRiwayatTopUp() throws SQLException {
-        return dbConn.stm.executeQuery("SELECT * FROM riwayat_top_up ORDER BY tanggal_top_up DESC");
+    public ResultSet getRiwayatTransaksi() throws SQLException {
+        return dbConn.stm.executeQuery("SELECT * FROM rental "
+                + "INNER JOIN lapangan USING (id_lapangan) "
+                + "INNER JOIN user USING (id_user) "
+                + "ORDER BY waktu_pemesanan DESC");
     }
 
     public ResultSet indexJenisLapangan() throws SQLException {

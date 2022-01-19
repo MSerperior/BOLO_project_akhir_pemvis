@@ -353,6 +353,7 @@ public class LoginView extends javax.swing.JFrame {
             this.dispose();
             new HomeView(user).setVisible(true);
         }
+        
         else{
             System.out.println("invalid login");
         }
